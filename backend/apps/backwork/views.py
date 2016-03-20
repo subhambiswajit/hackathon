@@ -1,21 +1,26 @@
 from django.shortcuts import render
 from apps.backwork.models import TCustomerMstr
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
-
+@csrf_exempt
 def login_user(request):
+    data = ''
+    username = ''
+    password = ''
     if request.POST:
-        try:
-            username = request.POST['email']
-            password = request.POST['password']
-            user = authenticate(username=username, password=password)
-            print user
-            if user is not None:
-                login(request, user)
-                return HttpResponse('The user is loggen in succesfully')
-            else:
-                raise ObjectDoesNotExist
-        except  ObjectDoesNotExist:
-            messages.warning(request,"Wrong username or password")
-            return HttpResponse('User not logged in')
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+        else:
+            raise ObjectDoesNotExist
+        print '>>>>>>>>>>>>.'
+        print username
+        print password
+        credentials = [username,password]
+        data = json.dumps(credentials)
+    return HttpResponse(data)

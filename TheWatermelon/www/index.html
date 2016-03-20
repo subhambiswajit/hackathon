@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="Ctrl" class="platform-android platform-cordova platform-webview">
+  
+  <script id="Page1.html" type="text/ng-template">
+  
+  
+  <ion-content style="">
+  <div style="text-align:center;background-color:#fff"><br><img src="img/logo.png" height="100px" width="100px" alt=""><br><br></div>
+
+
+          <div class="list" >
+            <label class="item item-input">
+             <input  type="text" ng-model="user.username" placeholder="Username">
+            </label>
+            <label class="item item-input">
+              
+              <input type="password" ng-model="user.password" placeholder="Password">
+            </label>
+          </div>
+          <div class="padding">
+            <button style="background-color:#055496;color:white" class="button button-block" ng-click="submit(user)">
+              Login
+            </button>
+      </div>
+             <div class="padding">
+            <button style="background-color:#055496;color:white" class="button button-block">
+              signup
+            </button>
+      </div>          
+</ion-content>
+</script>
+
+
+ <script id="Signup.html" type="text/ng-template">
+  <div class="bar bar-header bar-positive">
+  <h1 class="title">Sign Up!</h1>
+</div>
+  
+  <ion-content>
+  <div class="list list-inset">
+  <label class="item item-input">
+    <input type="text" placeholder="Username" ng-model = "user.nam">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Email id" ng-model = "user.email">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Address" ng-model = "user.add">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Pincode" ng-model = "user.pin">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Password" ng-model = "user.pass">
+  </label>
+  <label class="item item-input">
+    <input type="text" placeholder="Confirm Password" ng-model = "cpass">
+  </label>
+</div>
+       
+       <br><br>
+       <p ng-show="cpass!=user.pass"> Passwords dont match! </p>   
+</ion-content>
+<a href = "#/Page1"><button clas="button button-positive pull-right">BACK</button></a>
+<button class = "button button-positive pull-left" ng-click = "signup(user)" ng-show = "cpass==user.pass">SAVE DETAILS</button>
+</script>
+
+
+<script id="Side.html" type="text/ng-template">
+ <ion-side-menus>
+        
+        <ion-side-menu-content>
+          <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button class="button-icon ion-arrow-left-c">
+            </ion-nav-back-button>
+          </ion-nav-bar>
+          <ion-nav-buttons side="left">
+            <button class="button button-icon button-positive ion-navicon" ng-click="toggleLeft()">
+            </button>
+          </ion-nav-buttons>
+          <ion-nav-view name="appContent"></ion-nav-view>
+        </ion-side-menu-content> 
+        
+        <ion-side-menu side="left">
+          <ion-header-bar class="bar-positive">
+            <h1 class="title">Side Menu</h1>
+          </ion-header-bar>
+          <ion-content>
+            <div class="list">
+
+  <div class="item item-divider">
+    
+  </div>
+
+  <a class="item" href="#/Side/home" style="float:left">
+  Settings<br>
+    <button class="button button-positive">
+      <i class="icon ion-gear-b"></i>
+    </button>
+  </a>
+
+  <a class="item" href="#/Page4" style="float:right">
+  Logout<br>
+    <button class="button button-positive">
+      <i class="icon ion-log-out"></i>
+    </button>
+  </a>
+
+</div>
+          </ion-content>
+        </ion-side-menu>
+      </ion-side-menus>
+    </script>
+    
+<script id="home.html" type="text/ng-template">
+ 
+<ion-view title="FRIENDS LIST">
+
+ <ion-content padding="true">
+  
+<div class="list" style="background-color: beige">
+<ion-scroll zooming="false" direction="y" style=" height: 500px">
+
+    <a class="item item-avatar item-icon-right" href="#/Page3">
+  
+      <img src="dolphin.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Dolphin</h2>
+      <p>FG3043</p>
+    </a>
+
+   <a class="item item-avatar item-icon-right" href="#/Page3">
+   
+      <img src="donkey.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Donkey</h2>
+      <p>MG0000</p>
+    </a>
+
+  <a class="item item-avatar item-icon-right" href="#/Page3">
+  
+      <img src="penguin.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Pingu</h2>
+      <p>FG2043</p>
+    </a>
+  
+  <a class="item item-avatar item-icon-right" href="#/Page3">
+
+      <img src="giraffe.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Gerry</h2>
+      <p>MG1124</p>
+    </a>
+  
+  <a class="item item-avatar item-icon-right" href="#/Page3">
+  
+     <img src="goose.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Goosy</h2>
+      <p>FG3400</p>
+    </a>
+  
+  <a class="item item-avatar item-icon-right" href="#/Page3">
+   
+      <img src="great white.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Whitey</h2>
+      <p>MG4521</p>
+    </a>
+  
+  <a class="item item-avatar item-icon-right" href="#/Page3">
+   
+      <img src="leopard.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Leopard</h2>
+      <p>MG4523</p>
+    </a>
+  
+  <a class="item item-avatar item-icon-right" href="#/Page3">
+   
+      <img src="otter.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Otty</h2>
+      <p>FG4444</p>
+    </a>
+  
+  <a class="item item-avatar item-icon-right" href="#/Page3">
+   
+      <img src="pig.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Piggy</h2>
+      <p>MG6622</p>
+    </a>
+  
+  <a class="item item-avatar item-icon-right" href="#/Page3">
+   
+      <img src="weasel.jpg">
+    <i class="icon ion-navicon"></i>
+      <h2>Weasel</h2>
+      <p>MG3448</p>
+    </a>
+  <br><br>
+</div>
+</ion-scroll>
+</ion-content>
+<ion-footer-bar>
+<div class="bar bar-footer bar-positive">
+  <a href="#/Page4"><button class="button button-clear pull-right">LOGOUT</button></a>
+  <pre>                 </pre><a href="#/Page5"><button class="button button-clear pull-right item-icon-right">ADD NEW</button></a>
+</div>
+</ion-footer-bar>
+</ion-view>
+<!--<button><a href="#/Page4">LOGOUT</a></button>-->
+</script>
+
+<script id="Page3.html" type="text/ng-template">
+
+<div class="list card" style="background-color: beige">
+
+  <div class="item item-icon-left">
+    <i class="icon ion-home"></i>
+    <input type="text" placeholder = "Enter home address" ng-model="user.add">
+  </div>
+
+  <div class="item item-icon-left">
+    <i class="icon ion-ios-telephone"></i>
+    <input type="text" placeholder = "Enter phone number" ng-model="user.no">
+  </div>
+
+  <div class="item item-icon-left">
+    <i class="icon ion-wifi"></i>
+   <input type="text" placeholder = "Enter wireless password" ng-model="user.wifi">
+  </div>
+
+  <div class="item item-icon-left">
+    <i class="icon ion-card"></i>
+    <input type="text" placeholder = "Enter card information" ng-model="user.card">
+  </div>
+  <br>
+  <a href="#/Page7" class="item item-icon-right">
+    <i class="icon ion-ios-telephone-outline"></i>
+    Call Me
+  </a>
+<br><br>
+<a href="#/Side/home"><button class="button button-positive pull-right">BACK</button></a>
+<button class="button button-positive pull-left" ng-click="save(user)">SAVE DETAILS</button>
+</div>
+</script>
+
+<script id="Page4.html" type="text/ng-template">
+<div style="background-color: beige; font-color: cyan">
+<p><h3>Logged out successfully! :)</h3></p>
+<br><br>
+<a href="#/Page1"><button class="button button-positive pull-right">LOGIN AGAIN</button></a>
+</div>
+</script>
+
+<script id="Page5.html" type="text/ng-template">
+
+<div class="list card" style="background-color: beige">
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-ios-person-outline"></i>
+    Keep a display picture
+  </a>
+  
+  <div class="item item-icon-left">
+    <i class="icon ion-home"></i>
+    <input type="text" placeholder = "Enter display name" ng-model="user.name">
+  </div>
+  
+  <div class="item item-icon-left">
+    <i class="icon ion-home"></i>
+    <input type="text" placeholder = "Enter display status" ng-model="user.status">
+  </div>
+  <div class="item item-icon-left">
+    <i class="icon ion-home"></i>
+    <input type="text" placeholder = "Enter home address" ng-model="user.add">
+  </div>
+
+  <div class="item item-icon-left">
+    <i class="icon ion-ios-telephone"></i>
+    <input type="text" placeholder = "Enter phone number" ng-model="user.no">
+  </div>
+
+  <div class="item item-icon-left">
+    <i class="icon ion-wifi"></i>
+   <input type="text" placeholder = "Enter wireless password" ng-model="user.wifi">
+  </div>
+
+  <div class="item item-icon-left">
+    <i class="icon ion-card"></i>
+    <input type="text" placeholder = "Enter card information" ng-model="user.card">
+  </div>
+  <br><br>
+<a href="#/Side/home"><button class="button button-positive pull-right">BACK</button></a>
+<button class="button button-positive pull-left" ng-click="save(user)">SAVE DETAILS</button>
+</div>
+</script>
+
+<script id="Page7.html" type="text/ng-template">
+ 
+<div class = "bar bar-header bar-royal">
+  <h1 class="title">Calling...</h1>
+  </div>
+  </ion-header-bar>
+  <ion-content><br><br><br>
+<p style="text-align:center"><img src = "images.jpg" width="90px" height = "100px" alt=""><br>
+<a href="#/Side/home"><button class="button button-royal pull-right">END CALL</button></a>
+</ion-content>
+</script>
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+   <!-- <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>-->
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

@@ -56,7 +56,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 AUTHENTICATION_BACKENDS = (
 
 
-    'backend.backends.HackathonBackend',
+    'customhackathonbackend.backends.HackathonBackend',
     'django.contrib.auth.backends.ModelBackend',
 
 
