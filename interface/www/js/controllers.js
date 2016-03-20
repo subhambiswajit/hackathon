@@ -1,28 +1,37 @@
-angular.module('starter.controllers', [])
+var module = angular.module('myIonicApp.controllers');
 
-.controller('DashCtrl', function($scope) {})
+module.controller('Ctrl',function($scope,$http,$ionicPopup,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,$rootScope,$log,$ionicScrollDelegate,ContactService){
+    //$scope.header = "Welcome to the galaxy's finest smugglers";
+    //$scope.smuglers = [];
+    
+    $scope.submit = function(user){
+      $http({
+      method: 'POST',
+      url: 'http://localhost:8100/api'+ 'smugglers/',
+      data: {"username":user.username, "password":user.password}
+    }).then(function successCallback(response) {
+        $scope.smuglers = [];
+        for(var r in response.data) {
+          var smugler = response.data[r];
+          $scope.smuglers.push(smugler);
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+        }
+        console.log($scope.smuglers);
+    }, function errorCallback(response) {
+        console.log("ERROR");
+    });
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+    }
+        
+        /*$scope.getDetails = function(smugler){
+        var url = 'http://localhost:8100/api'  + smugler.id+'/';
+        $http.get(url).then(function successCallback(response){
+            var alertPopup = $ionicPopup.alert({
+              title: 'More details',
+              template: ''+smugler.name+' '+smugler.lastname+' is a '+response.data+'',
+            });
+        },function errorCallback(response){
+            console.log("ERROR");
+        });*/
+    }
+    )}
