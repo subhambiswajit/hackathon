@@ -55,5 +55,9 @@ angular.module('starter.controllers', [])
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
   };
+
+  $scope.signup_redirect = function(){
+     $location.url('/signup');
+  }
   
             });

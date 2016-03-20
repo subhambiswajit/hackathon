@@ -68,5 +68,10 @@ angular.module('starter', ['ionic','starter.controllers'])
                templateUrl:'Page7.html',
                controller:'Ctrl'
                })
+    .state('signup',{
+               url: '/signup',
+               templateUrl:'Signup.html',
+               controller:'Ctrl'
+               })
  $urlRouterProvider.otherwise('/Page1');
     });

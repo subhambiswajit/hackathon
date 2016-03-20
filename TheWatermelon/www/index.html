@@ -47,20 +47,24 @@
             </button>
       </div>
              <div class="padding">
-            <button style="background-color:#055496;color:white" class="button button-block">
+            <button style="background-color:#055496;color:white" class="button button-block" ng-click="signup_redirect()">
               signup
             </button>
       </div>          
 </ion-content>
 </script>
 
-
  <script id="Signup.html" type="text/ng-template">
-  <div class="bar bar-header bar-positive">
-  <h1 class="title">Sign Up!</h1>
+ <ion-header>
+
+  <div style="background-color:#055496;color:white" class="bar bar-header bar-positive">
+  <img src="img/logo_small.png" width="100%">
+  <h1 class="title">Sign Up</h1>
 </div>
+</ion-header>
   
   <ion-content>
+  <br><br><br>
   <div class="list list-inset">
   <label class="item item-input">
     <input type="text" placeholder="Username" ng-model = "user.nam">
@@ -82,11 +86,16 @@
   </label>
 </div>
        
-       <br><br>
+       <br>
        <p ng-show="cpass!=user.pass"> Passwords dont match! </p>   
+
+
+<div class="row responsive-sm">
+  <div class="col col-10 col-offset-33"><a style="text-decoration:none;color:white;" href="#/Page1"><button style="background-color:#055496;color:white" class="button button-positive pull-right" >BACK</button></a></div>
+  <div class="col col-offset-5 col-25"><button style="background-color:#055496;color:white" class = "button button-positive pull-left" ng-click = "signup(user)" ng-show = "cpass==user.pass">SAVE DETAILS</button></div>
+</div>
 </ion-content>
-<a href = "#/Page1"><button clas="button button-positive pull-right">BACK</button></a>
-<button class = "button button-positive pull-left" ng-click = "signup(user)" ng-show = "cpass==user.pass">SAVE DETAILS</button>
+
 </script>
 
 
