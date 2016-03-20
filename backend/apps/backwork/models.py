@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class TCustomerMstr(models.Model):
-    customer_id = models.CharField(db_column='Customer_ID', primary_key=True, max_length=10)  # Field name made lowercase.
+    customer_id= models.CharField(db_column='Customer_ID', primary_key=True, max_length=10)  # Field name made lowercase.
     country = models.CharField(db_column='Country', max_length=3, blank=True)  # Field name made lowercase.
     customer_name = models.CharField(max_length=35, blank=True)
     city = models.CharField(db_column='City', max_length=35, blank=True)  # Field name made lowercase.

@@ -53,6 +53,14 @@ ROOT_URLCONF = 'backend.urls'
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+AUTHENTICATION_BACKENDS = (
+
+
+    'backend.backends.HackathonBackend',
+    'django.contrib.auth.backends.ModelBackend',
+
+
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
