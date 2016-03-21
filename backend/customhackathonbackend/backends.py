@@ -12,9 +12,11 @@ class HackathonBackend:
             # Try to find a user matching your username
             print 'inside authenticate'
             user = TCustomerMstr.objects.get(customer_id=username)
-
+            print user.customer_id
+            print username
+            print user.customer_name
             #  Check the password is the reverse of the username
-            if check_password(password, user.customer_id):
+            if check_password(username, user.customer_id):
             #     # Yes? return the Django user object
                 return user
             else:

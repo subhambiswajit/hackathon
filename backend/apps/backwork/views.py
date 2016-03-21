@@ -9,29 +9,25 @@ import json
 
 @csrf_exempt
 def login_user(request):
-    data = ''
-    username = ''
-    password = ''
-    if request.POST:
-        try:
-            username = request.POST['username']
-            password = request.POST['password']
-            print username
-            print password
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                print '>>>>>>>>>>>>.'
-                print username
-                print password
-                credentials = [username,password]
-                data = json.dumps(credentials)
-                return HttpResponse(data)
-            else:
-                raise ObjectDoesNotExist
-        except  ObjectDoesNotExist:
-            credentials = [username,password]
-            data = json.dumps(credentials)
-            return HttpResponse(data)
+    data =''
+    request_data =''
+    username = 'hello'
+    password = 'hello'
+    credentials = ''
+    print "outside"
+    request_data = json.loads(request.body)
+    print request_data
+    if request.method == 'POST':
+        username= request_data['username']
+        password = request_data['password']
+        print password
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+        credentials = [username,password]
+        data = json.dumps(credentials)
+        print user
+    return HttpResponse(data)
+      
        
     

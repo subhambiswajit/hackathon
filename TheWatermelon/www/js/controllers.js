@@ -1,27 +1,21 @@
 angular.module('starter.controllers', [])
 
 .controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint){
+            $scope.user={};
             $scope.submit=function(user){
-              $http({
-      method: 'POST',
-      url: ApiEndpoint.url+ 'login/',
-      data: {       username: user.username,
-                        password: user.password   
-                    }
-    }).then(function successCallback(response) {
-        $scope.smuglers = [];
-       for(var r in response.data) {
-          var smugler = response.data[r]; 
-        }
-          $scope.smuglers.push(response);
-          console.log($scope.smuglers);
-          alert($scope.smuglers);
-          $location.url('/Side/home');
-        })
-        
-    }, function errorCallback(response) {
-        console.log("ERROR");
-    };
+                  
+                  $http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'login/',
+                        data:{username:$scope.user.username, password:$scope.user.password}
+                      }).then(function successCallback(response) {
+                          alert(response.data[0]);
+                          console.log("success");
+                      }, function errorCallback(response) {
+                          console.log("ERROR");
+                      });
+             $location.url('/dashboard');
+                }
       
     /*  if(user.username == 'anusha' && user.password == 'anusha')
       {
