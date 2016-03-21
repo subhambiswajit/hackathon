@@ -23,6 +23,22 @@ angular.module('starter', ['ionic','starter.controllers'])
 
   $stateProvider
         
+		.state('Sidemenu',{
+               url: '/Sidemenu',
+               templateUrl:'Sidemenu.html',
+         abstract: true,
+               controller:'Ctrl'
+               })
+        .state('Sidemenu.dashboard',{
+               url:'/dashboard',
+         views: {
+        'appContent' :{
+          templateUrl: 'dashboard.html',
+          controller : 'Ctrl'
+        }
+      }               
+               })
+		       
         .state('Page1',{
                url: '/Page1',
                templateUrl:'Page1.html',

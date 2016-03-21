@@ -99,11 +99,30 @@
 </script>
 
 <script id="dashboard.html" type="text/ng-template">
-     <ion-side-menus enable-menu-with-back-views="false"style="background-color:#055496" >
+<ion-view title="Dashboard">
+
+<ion-content>
+
+<div class="list">
+
+  <div class="item item-button-right">
+    Kissan Jam
+	
+    <button class="button button-positive">
+      <i class="icon ion-ios-telephone"></i>
+    </button>
+  </div>
+		</div>
+     </ion-content>
+	 </ion-view>
+</script>
+
+<script id="Sidemenu.html" type="text/ng-template">
+ <ion-side-menus enable-menu-with-back-views="false"style="background-color:#055496" >
       <ion-side-menu-content>
           <ion-nav-bar  class="bar-positive" style="background-color:#055496">
             
-
+<ion-nav-back-button> </ion-nav-back-button>
             <ion-nav-buttons side="left">
               <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
               </button>
@@ -115,9 +134,10 @@
 
         <ion-side-menu side="left" style="background-color:#055496">
           <ion-header-bar style="background-color:#055496;color:white" class="bar-assertive">
-            <h1 class="title">Dashboard</h1>
+            <h1 class="title">HUL</h1>
           </ion-header-bar>
           <ion-content>
+		  
             <ul class="list">
               <a href="#/event/check-in" class="item" menu-close>My Profile</a>
               <a href="#/event/attendees" class="item" menu-close>Place an Order</a>
@@ -132,8 +152,6 @@
 
       </ion-side-menus>
 </script>
-
-
 
 
 
