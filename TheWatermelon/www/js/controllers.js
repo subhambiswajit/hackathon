@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
                       }, function errorCallback(response) {
                           console.log("ERROR");
                       });
-             $location.url('/Sidemenu/dashboard');
+             $location.url('/Side/home');
                 }
       
     /*  if(user.username == 'anusha' && user.password == 'anusha')

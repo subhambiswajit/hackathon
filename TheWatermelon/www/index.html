@@ -194,8 +194,8 @@
             </ion-nav-back-button>
           </ion-nav-bar>
           <ion-nav-buttons side="left">
-            <button class="button button-icon button-positive ion-navicon" ng-click="toggleLeft()">
-            </button>
+          <!--  <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+              </button> -->
           </ion-nav-buttons>
           <ion-nav-view name="appContent"></ion-nav-view>
         </ion-side-menu-content> 
@@ -205,27 +205,15 @@
             <h1 class="title">Side Menu</h1>
           </ion-header-bar>
           <ion-content>
-            <div class="list">
+            <ul class="list">
+              <a href="#/event/check-in" class="item" menu-close>My Profile</a>
+              <a href="#/event/attendees" class="item" menu-close>Place an Order</a>
+              <a href="#/event/attendees" class="item" menu-close>View Orders</a>
+              <a href="#/event/attendees" class="item" menu-close>Delivery Information</a>
+              <a href="#/event/attendees" class="item" menu-close>Logout</a>
 
-  <div class="item item-divider">
-    
-  </div>
-
-  <a class="item" href="#/Side/home" style="float:left">
-  Settings<br>
-    <button class="button button-positive">
-      <i class="icon ion-gear-b"></i>
-    </button>
-  </a>
-
-  <a class="item" href="#/Page4" style="float:right">
-  Logout<br>
-    <button class="button button-positive">
-      <i class="icon ion-log-out"></i>
-    </button>
-  </a>
-
-</div>
+                
+            </ul>
           </ion-content>
         </ion-side-menu>
       </ion-side-menus>
@@ -233,102 +221,30 @@
     
 <script id="home.html" type="text/ng-template">
  
-<ion-view title="FRIENDS LIST">
+<!--<ion-view title="FRIENDS LIST"> -->
+<ion-view hide-nav-bar="true">
+
+<div class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+	   <h1 class="title">DASHBOARD</h1>
+	   
+	  </div>
 
  <ion-content padding="true">
-  
-<div class="list" style="background-color: beige">
-<ion-scroll zooming="false" direction="y" style=" height: 500px">
-
-    <a class="item item-avatar item-icon-right" href="#/Page3">
-  
-      <img src="dolphin.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Dolphin</h2>
-      <p>FG3043</p>
-    </a>
-
-   <a class="item item-avatar item-icon-right" href="#/Page3">
-   
-      <img src="donkey.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Donkey</h2>
-      <p>MG0000</p>
-    </a>
-
-  <a class="item item-avatar item-icon-right" href="#/Page3">
-  
-      <img src="penguin.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Pingu</h2>
-      <p>FG2043</p>
-    </a>
-  
-  <a class="item item-avatar item-icon-right" href="#/Page3">
-
-      <img src="giraffe.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Gerry</h2>
-      <p>MG1124</p>
-    </a>
-  
-  <a class="item item-avatar item-icon-right" href="#/Page3">
-  
-     <img src="goose.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Goosy</h2>
-      <p>FG3400</p>
-    </a>
-  
-  <a class="item item-avatar item-icon-right" href="#/Page3">
-   
-      <img src="great white.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Whitey</h2>
-      <p>MG4521</p>
-    </a>
-  
-  <a class="item item-avatar item-icon-right" href="#/Page3">
-   
-      <img src="leopard.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Leopard</h2>
-      <p>MG4523</p>
-    </a>
-  
-  <a class="item item-avatar item-icon-right" href="#/Page3">
-   
-      <img src="otter.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Otty</h2>
-      <p>FG4444</p>
-    </a>
-  
-  <a class="item item-avatar item-icon-right" href="#/Page3">
-   
-      <img src="pig.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Piggy</h2>
-      <p>MG6622</p>
-    </a>
-  
-  <a class="item item-avatar item-icon-right" href="#/Page3">
-   
-      <img src="weasel.jpg">
-    <i class="icon ion-navicon"></i>
-      <h2>Weasel</h2>
-      <p>MG3448</p>
-    </a>
   <br><br>
-</div>
+<div class="list">
+
+  <div class="item item-button-right">
+    Kissan Jam
+	
+    <button class="button button-positive">
+      <i class="icon ion-ios-telephone"></i>
+    </button>
+  </div>
+		</div>
 </ion-scroll>
 </ion-content>
-<ion-footer-bar>
-<div class="bar bar-footer bar-positive">
-  <a href="#/Page4"><button class="button button-clear pull-right">LOGOUT</button></a>
-  <pre>                 </pre><a href="#/Page5"><button class="button button-clear pull-right item-icon-right">ADD NEW</button></a>
-</div>
-</ion-footer-bar>
+
 </ion-view>
 <!--<button><a href="#/Page4">LOGOUT</a></button>-->
 </script>
