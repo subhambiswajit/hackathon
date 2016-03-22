@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
                       }, function errorCallback(response) {
                           console.log("ERROR");
                       });
-             $location.url('/Side/home');
+             $location.url('/Side/dash');
                 }
       
     /*  if(user.username == 'anusha' && user.password == 'anusha')
@@ -32,7 +32,7 @@ angular.module('starter.controllers', [])
 
       $scope.save=function() {
       alert("Saved!");
-      $location.url('/Side/home');
+      $location.url('/Side/dash');
       } 
 
       $ionicLoading.show({

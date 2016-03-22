@@ -29,7 +29,7 @@ angular.module('starter', ['ionic','starter.controllers'])
          abstract: true,
                controller:'Ctrl'
                })
-        .state('Sidemenu.dashboard',{
+     /*   .state('Sidemenu.dashboard',{
                url:'/dashboard',
          views: {
         'appContent' :{
@@ -37,7 +37,7 @@ angular.module('starter', ['ionic','starter.controllers'])
           controller : 'Ctrl'
         }
       }               
-               })
+               }) */
 		       
         .state('Page1',{
                url: '/Page1',
@@ -50,11 +50,11 @@ angular.module('starter', ['ionic','starter.controllers'])
          abstract: true,
                controller:'Ctrl'
                })
-        .state('Side.home',{
-               url:'/home',
+        .state('Side.dash',{
+               url:'/dash',
          views: {
         'appContent' :{
-          templateUrl: 'home.html',
+          templateUrl: 'dash.html',
           controller : 'Ctrl'
         }
       }               
