@@ -121,7 +121,7 @@
           </ion-header-bar>
           <ion-content>
             <ul class="list">
-              <a href="#/event/check-in" class="item" menu-close>My Profile</a>
+              <a href="#/Side/profile" class="item" menu-close>My Profile</a>
               <a href="#/event/attendees" class="item" menu-close>Place an Order</a>
               <a href="#/event/attendees" class="item" menu-close>View Orders</a>
               <a href="#/event/attendees" class="item" menu-close>Delivery Information</a>
@@ -211,6 +211,23 @@
 </ion-view>
 </script>
 
+<script id="profile.html" type="text/ng-template">
+
+<ion-view hide-nav-bar="true">
+
+<div class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+	   <h1 class="title">PUT TITLE HERE</h1>
+	   
+	  </div>
+	  <ion-content padding="true">
+	  <br><br>
+	  CONTENT HERE
+	  </ion-content>
+
+</ion-view>
+</script>
+
 <script id="Page3.html" type="text/ng-template">
 
 <div class="list card" style="background-color: beige">
@@ -295,10 +312,7 @@
 <button class="button button-positive pull-left" ng-click="save(user)">SAVE DETAILS</button>
 </div>
 </script>
-<script id="profile.html" type="text/ng-template">
 
-
-</script>
 
 <script id="Page7.html" type="text/ng-template">
  

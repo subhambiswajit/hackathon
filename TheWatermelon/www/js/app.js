@@ -59,6 +59,15 @@ angular.module('starter', ['ionic','starter.controllers'])
                     }
                     }               
                      })
+					 .state('Side.profile',{
+                     url:'/profile',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'profile.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
               .state('signup',{
                      url: '/signup',
                      templateUrl:'Signup.html',
