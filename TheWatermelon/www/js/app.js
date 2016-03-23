@@ -29,27 +29,21 @@ angular.module('starter', ['ionic','starter.controllers'])
          abstract: true,
                controller:'Ctrl'
                })
-     /*   .state('Sidemenu.dashboard',{
-               url:'/dashboard',
-         views: {
-        'appContent' :{
-          templateUrl: 'dashboard.html',
-          controller : 'Ctrl'
-        }
-      }               
-               }) */
+     
 		       
               .state('Page1',{
                      url: '/Page1',
                      templateUrl:'Page1.html',
                      controller:'Ctrl'
                      })
+
               .state('Side',{
                      url: '/Side',
                      templateUrl:'Side.html',
                abstract: true,
                      controller:'Ctrl'
                      })
+
               .state('Side.dash',{
                      url:'/dash',
                      views: {
@@ -59,28 +53,95 @@ angular.module('starter', ['ionic','starter.controllers'])
                     }
                     }               
                      })
-					 .state('Side.profile',{
-                     url:'/profile',
+					 
+					 .state('Side.view_orders',{
+                     url:'/view_orders',
                      views: {
                     'appContent' :{
-                      templateUrl: 'profile.html',
+                      templateUrl: 'view_orders.html',
                       controller : 'Ctrl'
                     }
                     }               
                      })
+					 
+					 .state('Side.view_orders.home',{
+                     url:'/home',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'home.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+					 .state('Side.view_orders.other',{
+                     url:'/other',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'other.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+					 .state('Side.view_orders.fav',{
+                     url:'/fav',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'fav.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+					 .state('Side.view_orders.settings',{
+                     url:'/settings',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'settings.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+					 
+					
+
+              .state('Side.profile',{
+                       url:'/profile',
+                       views: {
+                      'appContent' :{
+                        templateUrl: 'profile.html',
+                        controller : 'Ctrl'
+                      }
+                      }               
+                     })
+              .state('Side.delivery',{
+                       url:'/delivery',
+                       views: {
+                      'appContent' :{
+                        templateUrl: 'delivery.html',
+                        controller : 'Ctrl'
+                      }
+                      }               
+                     })
+
               .state('signup',{
                      url: '/signup',
                      templateUrl:'Signup.html',
                      controller:'Ctrl'
                      })
+
               .state('dashboard',{
                       url:'/dashboard',
                       templateUrl:'dashboard.html',
                       controller:'Ctrl'
                       })
+
               .state('profile',{
                       url:'/profile',
                       templateUrl:'profile.html',
+                      comtroller:'Ctrl'
+                      })
+              .state('delivery',{
+                      url:'/delivery',
+                      templateUrl:'delivery.html',
                       comtroller:'Ctrl'
                       })
  $urlRouterProvider.otherwise('/Page1');
