@@ -123,9 +123,10 @@
             <ul class="list">
               <a href="#/Side/profile" class="item item-icon-left" menu-close> <i class="icon ion-person"></i>My Profile</a>
               <a href="#/Side/dash" class="item item-icon-left" menu-close> <i class="icon ion-android-checkbox"></i>Place an Order</a>
-              <a href="#/event/attendees" class="item item-icon-left" menu-close>  <i class="icon ion-social-buffer"></i>View Orders</a>
+              <a href="#/Side/view_orders" class="item item-icon-left" menu-close>  <i class="icon ion-social-buffer"></i>View Orders</a>
               <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-android-send"></i>Delivery Information</a>
               <a href="#/Page1" class="item item-icon-left" menu-close><i class="icon ion-log-out"></i>Logout</a>
+			  
 
                 
             </ul>
@@ -133,7 +134,61 @@
         </ion-side-menu>
       </ion-side-menus>
     </script>
-    
+    <script id="view_orders.html" type="text/ng-template">
+ 
+
+<ion-view hide-nav-bar="true">
+
+<div class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+	   <h1 class="title">CHECKOUT</h1>
+	   
+	  </div>
+
+ <ion-content padding="true">
+  <br><br>
+  <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+    <div class="tabs">
+      <a class="tab-item" href="#/Side/view_orders/home">
+        <i class="icon ion-home"></i>
+        
+      </a>
+      <a class="tab-item" href="#/Side/view_orders/fav">
+        <i class="icon ion-star"></i>
+        
+      </a>
+      <a class="tab-item" href="#/Side/view_orders/settings">
+        <i class="icon ion-gear-a"></i>
+        
+      </a>
+	  <a class="tab-item" href="#/Side/view_orders/other">
+        <i class="icon ion-home"></i>
+        
+      </a>
+    </div>
+  </div>
+  
+  </ion-content>
+
+</ion-view>
+  </script>
+  
+  <script id = "home.html" type="text/ng-template">
+  HOME
+  </script>
+  
+  <script id = "fav.html" type="text/ng-template">
+  FAVORITES
+  </script>
+  
+  <script id = "settings.html" type="text/ng-template">
+  SETTINGS
+  </script>
+  
+  <script id = "other.html" type="text/ng-template">
+  OTHERS
+  </script>
+	
 <script id="dash.html" type="text/ng-template">
  
 
