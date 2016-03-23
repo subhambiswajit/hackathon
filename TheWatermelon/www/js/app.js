@@ -22,15 +22,6 @@ angular.module('starter', ['ionic','starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-        
-		.state('Sidemenu',{
-               url: '/Sidemenu',
-               templateUrl:'Sidemenu.html',
-         abstract: true,
-               controller:'Ctrl'
-               })
-     
-		       
               .state('Page1',{
                      url: '/Page1',
                      templateUrl:'Page1.html',
