@@ -44,12 +44,14 @@ angular.module('starter', ['ionic','starter.controllers'])
                      templateUrl:'Page1.html',
                      controller:'Ctrl'
                      })
+
               .state('Side',{
                      url: '/Side',
                      templateUrl:'Side.html',
                abstract: true,
                      controller:'Ctrl'
                      })
+
               .state('Side.dash',{
                      url:'/dash',
                      views: {
@@ -59,28 +61,46 @@ angular.module('starter', ['ionic','starter.controllers'])
                     }
                     }               
                      })
-					 .state('Side.profile',{
-                     url:'/profile',
-                     views: {
-                    'appContent' :{
-                      templateUrl: 'profile.html',
-                      controller : 'Ctrl'
-                    }
-                    }               
+
+              .state('Side.profile',{
+                       url:'/profile',
+                       views: {
+                      'appContent' :{
+                        templateUrl: 'profile.html',
+                        controller : 'Ctrl'
+                      }
+                      }               
                      })
+              .state('Side.delivery',{
+                       url:'/delivery',
+                       views: {
+                      'appContent' :{
+                        templateUrl: 'delivery.html',
+                        controller : 'Ctrl'
+                      }
+                      }               
+                     })
+
               .state('signup',{
                      url: '/signup',
                      templateUrl:'Signup.html',
                      controller:'Ctrl'
                      })
+
               .state('dashboard',{
                       url:'/dashboard',
                       templateUrl:'dashboard.html',
                       controller:'Ctrl'
                       })
+
               .state('profile',{
                       url:'/profile',
                       templateUrl:'profile.html',
+                      comtroller:'Ctrl'
+                      })
+              .state('delivery',{
+                      url:'/delivery',
+                      templateUrl:'delivery.html',
                       comtroller:'Ctrl'
                       })
  $urlRouterProvider.otherwise('/Page1');
