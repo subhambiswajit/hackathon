@@ -29,15 +29,7 @@ angular.module('starter', ['ionic','starter.controllers'])
          abstract: true,
                controller:'Ctrl'
                })
-     /*   .state('Sidemenu.dashboard',{
-               url:'/dashboard',
-         views: {
-        'appContent' :{
-          templateUrl: 'dashboard.html',
-          controller : 'Ctrl'
-        }
-      }               
-               }) */
+     
 		       
               .state('Page1',{
                      url: '/Page1',
@@ -61,6 +53,55 @@ angular.module('starter', ['ionic','starter.controllers'])
                     }
                     }               
                      })
+					 
+					 .state('Side.view_orders',{
+                     url:'/view_orders',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'view_orders.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+					 
+					 .state('Side.view_orders.home',{
+                     url:'/home',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'home.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+					 .state('Side.view_orders.other',{
+                     url:'/other',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'other.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+					 .state('Side.view_orders.fav',{
+                     url:'/fav',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'fav.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+					 .state('Side.view_orders.settings',{
+                     url:'/settings',
+                     views: {
+                    'appContent' :{
+                      templateUrl: 'settings.html',
+                      controller : 'Ctrl'
+                    }
+                    }               
+                     })
+					 
+					
 
               .state('Side.profile',{
                        url:'/profile',
