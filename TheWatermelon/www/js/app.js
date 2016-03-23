@@ -127,13 +127,7 @@ angular.module('starter', ['ionic','starter.controllers'])
                      templateUrl:'Signup.html',
                      controller:'Ctrl'
                      })
-
-              .state('dashboard',{
-                      url:'/dashboard',
-                      templateUrl:'dashboard.html',
-                      controller:'Ctrl'
-                      })
-
+              
               .state('profile',{
                       url:'/profile',
                       templateUrl:'profile.html',
