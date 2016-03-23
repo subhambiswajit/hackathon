@@ -221,110 +221,96 @@
 	   
 	  </div>
 	  <ion-content padding="true">
-	  <br><br>
+    <br>
+    <ion-scroll>
+      	 
+      <div class="row card">
+        <div class="col col-80">
+          <label class="item item-input">
+          <span class="input-label">First Name</span>
+          <input type="text" placeholder="Simran" disabled>
+          </label>
+          
+        </div>
+
+      <div class="col col-20">
+         <button class="button button-positive " style="background-color:#055496">
+            Edit
+          </button>
+      </div>
+      </div>
+      
+      <div class="row card">
+      <div class="col col-80">
+      <label class="item item-input">
+      <span class="input-label">Last Name</span>
+      <input type="text" placeholder="Kaur" disabled>
+      </label>
+      </div>
+
+      <div class="col col-20">
+          <button class="button button-positive " style="background-color:#055496">
+            Edit
+          </button>
+      </div>
+      </div>
+
+       <div class="row card">
+       <div class="col col-80">
+      <label class="item item-input">
+      <span class="input-label">E-mail ID</span>
+      <input type="text" placeholder="simrandeol@gmail.com" disabled>
+      </label>
+      </div>
+      <div class="col col-20">
+          <button class="button button-positive " style="background-color:#055496">
+            Edit
+          </button>
+      </div>
+      </div>
+
+     
+      <div class="row card">
+     <div class="col col-80">
+      <label class="item item-input">
+      <span class="input-label">Address</span>
+      <input type="text" placeholder="chandigrah" disabled>
+      </label>
+      </div>
+      <div class="col col-20">
+          <button class="button button-positive " style="background-color:#055496">
+            Edit
+          </button>
+      </div>
+      </div>
+     
+
+    <div class="row card">
+    <div class="col col-80">
+      <label class="item item-input">
+      <span class="input-label">Contact Details</span>
+      <input type="text" placeholder="9999999999" disabled>
+      </label>
+      </div>
+      <div class="col col-20">
+          <button class="button button-positive " style="background-color:#055496">
+            Edit
+          </button>
+      </div>
+      </div>
+      
+      <div class="row">
+      <div class="col col-100">
+      <button class="button button-block button-positive" style="background-color:#055496">
+      Save Profile
+      </button>
+      </div>
+      </div>
+      </ion-scroll>
 	  </ion-content>
 
 </ion-view>
-</script>
-
-<script id="Page3.html" type="text/ng-template">
-
-<div class="list card" style="background-color: beige">
-
-  <div class="item item-icon-left">
-    <i class="icon ion-home"></i>
-    <input type="text" placeholder = "Enter home address" ng-model="user.add">
-  </div>
-
-  <div class="item item-icon-left">
-    <i class="icon ion-ios-telephone"></i>
-    <input type="text" placeholder = "Enter phone number" ng-model="user.no">
-  </div>
-
-  <div class="item item-icon-left">
-    <i class="icon ion-wifi"></i>
-   <input type="text" placeholder = "Enter wireless password" ng-model="user.wifi">
-  </div>
-
-  <div class="item item-icon-left">
-    <i class="icon ion-card"></i>
-    <input type="text" placeholder = "Enter card information" ng-model="user.card">
-  </div>
-  <br>
-  <a href="#/Page7" class="item item-icon-right">
-    <i class="icon ion-ios-telephone-outline"></i>
-    Call Me
-  </a>
-<br><br>
-<a href="#/Side/home"><button class="button button-positive pull-right">BACK</button></a>
-<button class="button button-positive pull-left" ng-click="save(user)">SAVE DETAILS</button>
-</div>
-</script>
-
-<script id="Page4.html" type="text/ng-template">
-<div style="background-color: beige; font-color: cyan">
-<p><h3>Logged out successfully! :)</h3></p>
-<br><br>
-<a href="#/Page1"><button class="button button-positive pull-right">LOGIN AGAIN</button></a>
-</div>
-</script>
-
-<script id="Page5.html" type="text/ng-template">
-
-<div class="list card" style="background-color: beige">
-
-  <a href="#" class="item item-icon-left">
-    <i class="icon ion-ios-person-outline"></i>
-    Keep a display picture
-  </a>
-  
-  <div class="item item-icon-left">
-    <i class="icon ion-home"></i>
-    <input type="text" placeholder = "Enter display name" ng-model="user.name">
-  </div>
-  
-  <div class="item item-icon-left">
-    <i class="icon ion-home"></i>
-    <input type="text" placeholder = "Enter display status" ng-model="user.status">
-  </div>
-  <div class="item item-icon-left">
-    <i class="icon ion-home"></i>
-    <input type="text" placeholder = "Enter home address" ng-model="user.add">
-  </div>
-
-  <div class="item item-icon-left">
-    <i class="icon ion-ios-telephone"></i>
-    <input type="text" placeholder = "Enter phone number" ng-model="user.no">
-  </div>
-
-  <div class="item item-icon-left">
-    <i class="icon ion-wifi"></i>
-   <input type="text" placeholder = "Enter wireless password" ng-model="user.wifi">
-  </div>
-
-  <div class="item item-icon-left">
-    <i class="icon ion-card"></i>
-    <input type="text" placeholder = "Enter card information" ng-model="user.card">
-  </div>
-  <br><br>
-<a href="#/Side/home"><button class="button button-positive pull-right">BACK</button></a>
-<button class="button button-positive pull-left" ng-click="save(user)">SAVE DETAILS</button>
-</div>
-</script>
-
-
-<script id="Page7.html" type="text/ng-template">
- 
-<div class = "bar bar-header bar-royal">
-  <h1 class="title">Calling...</h1>
-  </div>
-  </ion-header-bar>
-  <ion-content><br><br><br>
-<p style="text-align:center"><img src = "images.jpg" width="90px" height = "100px" alt=""><br>
-<a href="#/Side/home"><button class="button button-royal pull-right">END CALL</button></a>
-</ion-content>
-</script>
- 
+</script> 
     <ion-nav-view></ion-nav-view>
   </body>
 </html>
