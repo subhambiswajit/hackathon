@@ -130,7 +130,7 @@
 
              
 
-              <a href="#/event/attendees" class="item item-icon-left" menu-close>  <i class="icon ion-cash"></i>Promotional Offers</a>
+              <a href="#/Side/promotion" class="item item-icon-left" menu-close>  <i class="icon ion-cash"></i>Promotional Offers</a>
 
               <a href="#/Side/delivery" class="item item-icon-left" menu-close><i class="icon ion-model-s"></i>Delivery Information</a>
               <a href="#/Page1" class="item item-icon-left" menu-close><i class="icon ion-log-out"></i>Logout</a>
@@ -218,15 +218,13 @@
   </script>
 	
 <script id="dash.html" type="text/ng-template">
- 
-
 <ion-view hide-nav-bar="true">
 
 <div class="bar bar-header bar-positive">
       <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
 
 
-	   <h1 class="title">DASHBOARD</h1>
+	   <h1 class="title">Dashboard</h1>
      <button class="button button-light">
       Cart:2 Items
       </button> 
@@ -470,6 +468,23 @@
     </ion-view>
 
 </script> 
+<script id="promotion.html" type="text/ng-template">
+      <ion-view hide-nav-bar="true">
+
+<div class="bar bar-header bar-positive">
+      <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
+     <h1 class="title">Promotional Offers</h1>
+     
+    </div>
+    <ion-content padding="true">
+    <br>
+      <ion-scroll>
+
+      
+      </ion-scroll>
+    </ion-content>
+
+</script>
     <ion-nav-view></ion-nav-view>
   </body>
 </html>

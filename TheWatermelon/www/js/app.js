@@ -121,6 +121,15 @@ angular.module('starter', ['ionic','starter.controllers'])
                       }
                       }               
                      })
+              .state('Side.promotion',{
+                       url:'/promotion',
+                       views: {
+                      'appContent' :{
+                        templateUrl: 'promotion.html',
+                        controller : 'Ctrl'
+                      }
+                      }               
+                     })
 
               .state('signup',{
                      url: '/signup',
@@ -142,6 +151,11 @@ angular.module('starter', ['ionic','starter.controllers'])
               .state('delivery',{
                       url:'/delivery',
                       templateUrl:'delivery.html',
+                      comtroller:'Ctrl'
+                      })
+              .state('promotion',{
+                      url:'/promotion',
+                      templateUrl:'promotion.html',
                       comtroller:'Ctrl'
                       })
  $urlRouterProvider.otherwise('/Page1');
