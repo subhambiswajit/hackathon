@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic','starter.controllers'])
+angular.module('starter', ['ionic','starter.controllers','ngCordova'])
 
 .constant('ApiEndpoint',{
         url: 'http://localhost:8100/api/'
@@ -18,6 +18,12 @@ angular.module('starter', ['ionic','starter.controllers'])
   });
 })
 
+.run(function($cordovaSplashscreen) {
+  setTimeout(function() {
+    $cordovaSplashscreen.hide()
+  }, 5000)
+})
+
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -31,7 +37,7 @@ angular.module('starter', ['ionic','starter.controllers'])
               .state('Side',{
                      url: '/Side',
                      templateUrl:'Side.html',
-               abstract: true,
+                     abstract: true,
                      controller:'Ctrl'
                      })
 
