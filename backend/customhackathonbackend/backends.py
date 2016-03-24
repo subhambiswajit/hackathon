@@ -1,7 +1,7 @@
 from django.contrib.auth.models import check_password
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from apps.backwork.models import TCustomerMstr
+from apps.backwork.models import GlobalUsers
 
 class HackathonBackend:
     """ When try to authenticating the student should pass contest id too """
@@ -11,20 +11,19 @@ class HackathonBackend:
         try:
             # Try to find a user matching your username
             print 'inside authenticate'
-            user = TCustomerMstr.objects.get(customer_id=username)
-            print user.customer_id
+            user = GlobalUsers.objects.get(gus_username=username)
             print username
-            print user.customer_name
+            print user.gus_username
             #  Check the password is the reverse of the username
-            if check_password(username, user.customer_id):
+            if check_password(password, user.gus_password):
             #     # Yes? return the Django user object
                 return user
             else:
             #     # No? return None - triggers default login
                 print 'userid/password does not match'
-                raise TCustomerMstr.DoesNotExist
+                raise GlobalUsers.DoesNotExist
                 # return None
-        except TCustomerMstr.DoesNotExist:
+        except GlobalUsers.DoesNotExist:
             # No user was found, return None - triggers default login failed
             # try:
             #     print 'Looking for user in guest'
@@ -44,6 +43,6 @@ class HackathonBackend:
     # Required for your backend to work properly - unchanged in most scenarios
     def get_user(self, user_id):
         try:
-            return TCustomerMstr.objects.get(customer_id=user_id)
-        except TCustomerMstr.DoesNotExist:
+            return GlobalUsers.objects.get(customer_id=user_id)
+        except GlobalUsers.DoesNotExist:
             return None

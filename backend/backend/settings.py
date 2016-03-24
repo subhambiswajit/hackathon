@@ -68,9 +68,9 @@ AUTHENTICATION_BACKENDS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hackaton_hul_team_gn',
-        'USER': 'demo',
-        'PASSWORD': 'demo',
+        'NAME': 'hackaton_hul_team_f',
+        'USER': 'team_f',
+        'PASSWORD': '98$271',
         'HOST': '52.192.228.70',
         'PORT': '3306',
     }
