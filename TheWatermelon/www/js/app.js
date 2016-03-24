@@ -44,54 +44,6 @@ angular.module('starter', ['ionic','starter.controllers'])
                     }
                     }               
                      })
-					 
-					 .state('Side.view_orders',{
-                     url:'/view_orders',
-                     views: {
-                    'appContent' :{
-                      templateUrl: 'view_orders.html',
-                      controller : 'Ctrl'
-                    }
-                    }               
-                     })
-					 
-					 .state('Side.view_orders.home',{
-                     url:'/home',
-                     views: {
-                    'appContent' :{
-                      templateUrl: 'home.html',
-                      controller : 'Ctrl'
-                    }
-                    }               
-                     })
-					 .state('Side.view_orders.other',{
-                     url:'/other',
-                     views: {
-                    'appContent' :{
-                      templateUrl: 'other.html',
-                      controller : 'Ctrl'
-                    }
-                    }               
-                     })
-					 .state('Side.view_orders.fav',{
-                     url:'/fav',
-                     views: {
-                    'appContent' :{
-                      templateUrl: 'fav.html',
-                      controller : 'Ctrl'
-                    }
-                    }               
-                     })
-					 .state('Side.view_orders.settings',{
-                     url:'/settings',
-                     views: {
-                    'appContent' :{
-                      templateUrl: 'settings.html',
-                      controller : 'Ctrl'
-                    }
-                    }               
-                     })
-					 
 					
 
               .state('Side.profile',{
@@ -121,6 +73,35 @@ angular.module('starter', ['ionic','starter.controllers'])
                       }
                       }               
                      })
+              .state('Side.vieworders',{
+                       url:'/vieworders',
+                       views: {
+                      'appContent' :{
+                        templateUrl: 'vieworders.html',
+                        controller : 'Ctrl'
+                      }
+                      }               
+                     })
+              .state('Side.address_details',{
+                       url:'/address_details',
+                       views: {
+                      'appContent' :{
+                        templateUrl: 'address_details.html',
+                        controller : 'Ctrl'
+                      }
+                      }               
+                     })
+               .state('Side.modeofpayment',{
+                       url:'/modeofpayment',
+                       views: {
+                      'appContent' :{
+                        templateUrl: 'modeofpayment.html',
+                        controller : 'Ctrl'
+                      }
+                      }               
+                     })
+              
+             
 
               .state('signup',{
                      url: '/signup',
@@ -143,5 +124,24 @@ angular.module('starter', ['ionic','starter.controllers'])
                       templateUrl:'promotion.html',
                       comtroller:'Ctrl'
                       })
+              .state('vieworders',{
+                      url:'/vieworders',
+                      templateUrl:'vieworders.html',
+                      comtroller:'Ctrl'
+                      })
+               .state('address_details',{
+                      url:'/address_details',
+                      templateUrl:'address_details.html',
+                      comtroller:'Ctrl'
+                      })
+                .state('modeofpayment',{
+                      url:'/modeofpayment',
+                      templateUrl:'modeofpayment.html',
+                      comtroller:'Ctrl'
+                      })
+
+
+             
+
  $urlRouterProvider.otherwise('/Page1');
     });
