@@ -1,42 +1,93 @@
 angular.module('starter.controllers', [])
 
-.controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint){
+.controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup){
             $scope.user = {};
             $scope.submit=function(user){
-                 
+                 if(user.username=='' || user.password=='')
+				 {
+					 $scope.showAlert("Field Empty!","Error");
+					 user.username="";
+					 user.password="";
+				 }
+				 else {
                   $http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'login/',
-                        data:{username:$scope.user.username, password:$scope.user.password}
+                        url: ApiEndpoint.url+ 'signin/',
+                        data:{username:user.username, password:user.password}
                       }).then(function successCallback(response) {
                           alert(response.data);
                           console.log("success");
+						 $scope.showAlert("Logged in successfully!","Logged in");
 						  $location.url('/Side/dash');
-						  alert('Logged in');
+						  user.password='';
+						  //alert('Logged in');
                       }, function errorCallback(response) {
-                          console.log("ERROR");
+						  $scope.showAlert("Error during login!","Internal Error");
+						  user.password='';
+                         // console.log("ERROR");
 						  
-                      });
+				 });}
              
 			
 			}
+			
 			$scope.signup = function(user)
 			{
-				
+				if(user.nam=='' || user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
+					$scope.showAlert("Some field is empty!","Error");
+				else{
 				$http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'signup/',
                         data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
                           alert(response.data);
-                          console.log("success");
-						  // $location.url('/Page1');
-						  alert('Signed up');
+                          
+						  $scope.showAlert("Signed up successfully!","Signed Up");
+						  $location.url('/Page1');
+						  
                       }, function errorCallback(response) {
                           console.log("ERROR");
+						  $scope.showAlert("Internal error during login!","Internal error");
+						  
+                      });
+				}
+			}
+			$scope.verify = function(n,user) {
+				if(n==0)
+					$scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
+				$http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'verify_otp/',
+                        data:{otp:user.otp, verify:n}
+                      }).then(function successCallback(response) {
+						  if(response.data == true)
+						  {
+							  $scope.showAlert("Verified successfully!","Success");
+							  $location.url("/Side/dash");
+						  }
+                          else if(response.data == false)
+						  {
+							  $scope.showAlert("Invalid verification code!","Error");
+							  user.otp = "";
+						  }
+					
+                      }, function errorCallback(response) {
+                          console.log("ERROR");
+						  $scope.showAlert("Internal error during verification!","Internal error");
 						  
                       });
 			}
+			$scope.showAlert = function(msg,head) {
+   var alertPopup = $ionicPopup.alert({
+     title: head,
+     template: msg
+	 
+			});
+$timeout(function() {
+     alertPopup.close(); 
+  }, 3000);
+ 			}
       
     /*  if(user.username == 'anusha' && user.password == 'anusha')
       {
@@ -69,7 +120,7 @@ angular.module('starter.controllers', [])
 
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
-  };
+  }
 
   $scope.signup_redirect = function(){
      $location.url('/signup');
