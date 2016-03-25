@@ -7,9 +7,8 @@ from django.contrib.auth import authenticate, login
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 from django.core.mail import EmailMessage
+from django.contrib.auth.decorators import login_required
 
 import json
 import datetime 
@@ -72,6 +71,35 @@ def user_login(request):
     	except  ObjectDoesNotExist:
     	    data = False
     	    return HttpResponse(data)
+
+@login_required
+def verify_code(request):
+	request_data = json.loads(request.body)
+	verify_code = ''
+	userid= ''
+	username = ''
+	data = ''
+	flag_code = request_data['verify']
+	username = GlobalUsers.objects.get(gus_email=request.user.gus_email,isused=0)
+	if flag_code == '0':
+		verify_code = str(random.randint(10000,99999))	
+		username.gus_confirmcode = verify_code
+		username.save()
+		subject = "email verification HUL"            
+        message = "please verify your email by typing the following code in your Distributor App " + verify_code
+        sender = "hul@gmail.com"
+        send_mail(subject, message, sender, [request.user.gus_email])
+        data = False
+    else:
+    	verify_code = str(request_data['otp'])
+    	if verify_code == request.user.gus_confirmcode:
+    		data = True
+		else:
+			data = False
+	return HttpResponse(data)
+
+
+
 
       
        

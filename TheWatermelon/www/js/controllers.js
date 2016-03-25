@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
 						  //alert('Signed up');
                       }, function errorCallback(response) {
                           console.log("ERROR");
-						  $scope.showAlert("Internal error during login!","Internal error");
+						  $scope.showAlert("Some field is empty !(error)");
 						  
                       });
 				}
