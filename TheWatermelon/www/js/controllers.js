@@ -39,7 +39,7 @@ angular.module('starter.controllers', [])
 				$http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'signup/',
-                        data:{:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
+                        data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
                           alert(response.data);
                           
@@ -53,7 +53,7 @@ angular.module('starter.controllers', [])
                       });
 				}
 			}
-			scope.verify(n,user) = function {
+			$scope.verify = function(n,user) {
 				if(n==0)
 					$scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
 				$http({
