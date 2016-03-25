@@ -76,6 +76,15 @@ DATABASES = {
     }
 }
 
+EMPLATED_EMAIL_BACKEND = 'templated_email.backends.vanilla_django.TemplateBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'digu35@gmail.com'
+EMAIL_HOST_PASSWORD = 'digu13533'
+EMAIL_PORT = 587
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 

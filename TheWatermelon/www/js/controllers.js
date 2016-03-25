@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
                         url: ApiEndpoint.url+ 'login/',
                         data:{username:$scope.user.username, password:$scope.user.password}
                       }).then(function successCallback(response) {
-                          alert(response.data[0]);
+                          alert(response.data);
                           console.log("success");
 						  $location.url('/Side/dash');
 						  alert('Logged in');
@@ -25,12 +25,12 @@ angular.module('starter.controllers', [])
 				
 				$http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'login/',
-                        data:{username:user.nam,email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
+                        url: ApiEndpoint.url+ 'signup/',
+                        data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
-                          alert(response.data[0]);
+                          alert(response.data);
                           console.log("success");
-						  $location.url('/Page1');
+						  // $location.url('/Page1');
 						  alert('Signed up');
                       }, function errorCallback(response) {
                           console.log("ERROR");
