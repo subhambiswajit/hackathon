@@ -3,7 +3,13 @@ angular.module('starter.controllers', [])
 .controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup){
             $scope.user = {};
             $scope.submit=function(user){
-                 
+                 if(user.username=='' || user.password=='')
+				 {
+					 $scope.showAlert("Field Empty!","Error");
+					 user.username="";
+					 user.password="";
+				 }
+				 else {
                   $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'signin/',
@@ -13,12 +19,14 @@ angular.module('starter.controllers', [])
                           console.log("success");
 						 $scope.showAlert("Logged in successfully!","Logged in");
 						  $location.url('/Side/dash');
+						  user.password='';
 						  //alert('Logged in');
                       }, function errorCallback(response) {
 						  $scope.showAlert("Error during login!","Internal Error");
+						  user.password='';
                          // console.log("ERROR");
 						  
-                      });
+				 });}
              
 			
 			}
