@@ -54,6 +54,8 @@ angular.module('starter.controllers', [])
 				}
 			}
 			scope.verify(n,user) = function {
+				if(n==0)
+					$scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
 				$http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'verify_otp/',
@@ -69,9 +71,7 @@ angular.module('starter.controllers', [])
 							  $scope.showAlert("Invalid verification code!","Error");
 							  user.otp = "";
 						  }
-						//  $scope.showAlert("Signed up successfully!","Signed Up");
-						//  $location.url('/Page1');
-						 
+					
                       }, function errorCallback(response) {
                           console.log("ERROR");
 						  $scope.showAlert("Internal error during verification!","Internal error");
