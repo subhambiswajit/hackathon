@@ -3,7 +3,13 @@ angular.module('starter.controllers', [])
 .controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup){
             $scope.user = {};
             $scope.submit=function(user){
-                 
+                 if(user.username=='' || user.password=='')
+				 {
+					 $scope.showAlert("Field Empty!","Error");
+					 user.username="";
+					 user.password="";
+				 }
+				 else {
                   $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'signin/',
@@ -13,15 +19,18 @@ angular.module('starter.controllers', [])
                           console.log("success");
 						 $scope.showAlert("Logged in successfully!","Logged in");
 						  $location.url('/Side/dash');
+						  user.password='';
 						  //alert('Logged in');
                       }, function errorCallback(response) {
 						  $scope.showAlert("Error during login!","Internal Error");
+						  user.password='';
                          // console.log("ERROR");
 						  
-                      });
+				 });}
              
 			
 			}
+			
 			$scope.signup = function(user)
 			{
 				if(user.nam=='' || user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
@@ -33,12 +42,10 @@ angular.module('starter.controllers', [])
                         data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
                           alert(response.data);
-                          //console.log("success");
+                          
 						  $scope.showAlert("Signed up successfully!","Signed Up");
 						  $location.url('/Page1');
-						  //alert('Signed up');
-						  // $location.url('/Page1');
-						  //alert('Signed up');
+						  
                       }, function errorCallback(response) {
                           console.log("ERROR");
 						  $scope.showAlert("Some field is empty !(error)");
@@ -46,7 +53,31 @@ angular.module('starter.controllers', [])
                       });
 				}
 			}
-			
+			$scope.verify = function(n,user) {
+				if(n==0)
+					$scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
+				$http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'verify_otp/',
+                        data:{otp:user.otp, verify:n}
+                      }).then(function successCallback(response) {
+						  if(response.data == true)
+						  {
+							  $scope.showAlert("Verified successfully!","Success");
+							  $location.url("/Side/dash");
+						  }
+                          else if(response.data == false)
+						  {
+							  $scope.showAlert("Invalid verification code!","Error");
+							  user.otp = "";
+						  }
+					
+                      }, function errorCallback(response) {
+                          console.log("ERROR");
+						  $scope.showAlert("Internal error during verification!","Internal error");
+						  
+                      });
+			}
 			$scope.showAlert = function(msg,head) {
    var alertPopup = $ionicPopup.alert({
      title: head,

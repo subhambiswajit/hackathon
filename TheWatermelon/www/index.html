@@ -168,7 +168,7 @@
                             <div class="col col-offset-30 col-100">
                                   <div class="list list-inset">
                                   <label class="item item-input">
-                                  <input type="text" placeholder="Enter your OTP">
+                                  <input type="text" placeholder="Enter your OTP" ng-model="user.otp">
                                   </label>
                                   </div>
                             </div>
@@ -176,12 +176,12 @@
                         <br><br>
                        <div class="row">
                           <div class="col col-offset-10 col-50">
-                              <button class="button button-positive"style="background-color:#055496">
+                              <button class="button button-positive"style="background-color:#055496" ng-click="verify(0,user)">
                               Resend
                               </button>
                           </div>
                           <div class="col col-offset-5 col-80">
-                           <button class="button button-positive"style="background-color:#055496">
+                           <button class="button button-positive"style="background-color:#055496" ng-click="verify(1,user)">
                              Verify
                             </button>
                           </div>
