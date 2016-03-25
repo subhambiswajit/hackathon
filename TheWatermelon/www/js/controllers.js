@@ -30,6 +30,7 @@ angular.module('starter.controllers', [])
              
 			
 			}
+			
 			$scope.signup = function(user)
 			{
 				if(user.nam=='' || user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
@@ -38,7 +39,7 @@ angular.module('starter.controllers', [])
 				$http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'signup/',
-                        data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
+                        data:{:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
                           alert(response.data);
                           //console.log("success");
@@ -54,7 +55,23 @@ angular.module('starter.controllers', [])
                       });
 				}
 			}
-			
+			scope.verify(n,user) = function {
+				$http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'verify_otp/',
+                        data:{otp:user.otp, verify:n}
+                      }).then(function successCallback(response) {
+                          alert(response.data);
+                        
+						//  $scope.showAlert("Signed up successfully!","Signed Up");
+						//  $location.url('/Page1');
+						 
+                      }, function errorCallback(response) {
+                          console.log("ERROR");
+						 // $scope.showAlert("Internal error during login!","Internal error");
+						  
+                      });
+			}
 			$scope.showAlert = function(msg,head) {
    var alertPopup = $ionicPopup.alert({
      title: head,
