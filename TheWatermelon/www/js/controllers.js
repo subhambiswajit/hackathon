@@ -68,7 +68,7 @@ angular.module('starter.controllers', [])
 						 
                       }, function errorCallback(response) {
                           console.log("ERROR");
-						 // $scope.showAlert("Internal error during login!","Internal error");
+						  $scope.showAlert("Internal error during verification!","Internal error");
 						  
                       });
 			}
