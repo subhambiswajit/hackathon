@@ -42,12 +42,10 @@ angular.module('starter.controllers', [])
                         data:{:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
                           alert(response.data);
-                          //console.log("success");
+                          
 						  $scope.showAlert("Signed up successfully!","Signed Up");
 						  $location.url('/Page1');
-						  //alert('Signed up');
-						  // $location.url('/Page1');
-						  //alert('Signed up');
+						  
                       }, function errorCallback(response) {
                           console.log("ERROR");
 						  $scope.showAlert("Internal error during login!","Internal error");
@@ -61,8 +59,16 @@ angular.module('starter.controllers', [])
                         url: ApiEndpoint.url+ 'verify_otp/',
                         data:{otp:user.otp, verify:n}
                       }).then(function successCallback(response) {
-                          alert(response.data);
-                        
+						  if(response.data == true)
+						  {
+							  $scope.showAlert("Verified successfully!","Success");
+							  $location.url("/Side/dash");
+						  }
+                          else if(response.data == false)
+						  {
+							  $scope.showAlert("Invalid verification code!","Error");
+							  user.otp = "";
+						  }
 						//  $scope.showAlert("Signed up successfully!","Signed Up");
 						//  $location.url('/Page1');
 						 
