@@ -149,6 +149,46 @@
     </script>
 	
 	<script id = "otp.html" type="text/ng-template">
+        <ion-view hide-nav-bar="true">
+
+              <div style="background-color:#055496" class="bar bar-header bar-positive">
+                  <h1 class="title">E-mail Verification</h1>
+                </div>
+
+               <ion-content padding="true"> 
+               <br><br>
+                        <div class="row">
+                            <div class="col col-20">
+                            </div>
+                            <div class="col col-80">
+                              Enter the code sent to your E-mail
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-offset-30 col-100">
+                                  <div class="list list-inset">
+                                  <label class="item item-input">
+                                  <input type="text" placeholder="Enter your OTP">
+                                  </label>
+                                  </div>
+                            </div>
+                        </div>
+                        <br><br>
+                       <div class="row">
+                          <div class="col col-offset-10 col-50">
+                              <button class="button button-positive"style="background-color:#055496">
+                              Resend
+                              </button>
+                          </div>
+                          <div class="col col-offset-5 col-80">
+                           <button class="button button-positive"style="background-color:#055496">
+                             Verify
+                            </button>
+                          </div>
+                       </div> 
+
+         </ion-content>
+         </ion-view>   
 	</script>
 	
  <script id="view_orders.html" type="text/ng-template">
