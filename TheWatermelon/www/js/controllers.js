@@ -22,6 +22,7 @@ angular.module('starter.controllers', [])
 			}
 			$scope.signup = function(user)
 			{
+				
 				$http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'login/',
