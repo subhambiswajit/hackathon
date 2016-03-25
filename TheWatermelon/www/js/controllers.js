@@ -6,8 +6,8 @@ angular.module('starter.controllers', [])
                  
                   $http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'login/',
-                        data:{username:$scope.user.username, password:$scope.user.password}
+                        url: ApiEndpoint.url+ 'signin/',
+                        data:{username:user.username, password:user.password}
                       }).then(function successCallback(response) {
                           alert(response.data);
                           console.log("success");

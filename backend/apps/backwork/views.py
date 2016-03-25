@@ -49,6 +49,30 @@ def signup_user(request):
         print request_data
     return HttpResponse(data)
 
+@csrf_exempt
+def user_login(request):
+	# request_data = json.loads(request.body)
+    request_data = json.loads(request.body)
+    username = ''
+    password = ''
+    data = ''
+    username = request_data['username']
+    print username
+    password = request_data['password']
+    print password
+    if request.method == 'POST':
+    	try:
+    		user = authenticate(username=username, password=password)
+    		if user is not None:
+    		    data = True
+    		    login(request, user)
+    		    return HttpResponse(data)
+    		else:
+    		    raise ObjectDoesNotExist
+    	except  ObjectDoesNotExist:
+    	    data = False
+    	    return HttpResponse(data)
+
       
        
     
