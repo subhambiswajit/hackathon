@@ -55,22 +55,26 @@ def user_login(request):
     username = ''
     password = ''
     data = ''
+    username_first =''
+    username_first = GlobalUsers.objects.filter(gus_email= request_data['username'], gus_isused=0).values_list('gus_email', flat=True)
+
     username = request_data['username']
-    print username
     password = request_data['password']
-    print password
     if request.method == 'POST':
-    	try:
-    		user = authenticate(username=username, password=password)
-    		if user is not None:
-    		    data = True
-    		    login(request, user)
-    		    return HttpResponse(data)
-    		else:
-    		    raise ObjectDoesNotExist
-    	except  ObjectDoesNotExist:
-    	    data = False
-    	    return HttpResponse(data)
+        try:
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if username in username_first:
+                    data = "verify" 
+                else:    
+                    data = True
+                login(request, user)
+            else:
+                raise ObjectDoesNotExist
+                data = "False"
+        except  ObjectDoesNotExist:
+            data = False
+    return HttpResponse(data)
 
 @login_required
 def verify_code(request):
