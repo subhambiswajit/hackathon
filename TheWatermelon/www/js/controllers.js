@@ -1,20 +1,22 @@
 angular.module('starter.controllers', [])
 
-.controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint){
+.controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup){
             $scope.user = {};
             $scope.submit=function(user){
                  
                   $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'login/',
-                        data:{username:$scope.user.username, password:$scope.user.password}
+                        data:{username:user.username, password:user.password}
                       }).then(function successCallback(response) {
                           alert(response.data[0]);
                           console.log("success");
+						 $scope.showAlert("Logged in successfully!","Logged in");
 						  $location.url('/Side/dash');
-						  alert('Logged in');
+						  //alert('Logged in');
                       }, function errorCallback(response) {
-                          console.log("ERROR");
+						  $scope.showAlert("Error during login!","Internal Error");
+                         // console.log("ERROR");
 						  
                       });
              
@@ -22,7 +24,9 @@ angular.module('starter.controllers', [])
 			}
 			$scope.signup = function(user)
 			{
-				
+				if(user.nam=='' || user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
+					$scope.showAlert("Some field is empty!","Error");
+				else{
 				$http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'login/',
@@ -30,13 +34,26 @@ angular.module('starter.controllers', [])
                       }).then(function successCallback(response) {
                           alert(response.data[0]);
                           console.log("success");
+						  $scope.showAlert("Signed up successfully!","Signed Up");
 						  $location.url('/Page1');
-						  alert('Signed up');
+						  //alert('Signed up');
                       }, function errorCallback(response) {
                           console.log("ERROR");
 						  
                       });
+				}
 			}
+			
+			$scope.showAlert = function(msg,head) {
+   var alertPopup = $ionicPopup.alert({
+     title: head,
+     template: msg
+	 
+			});
+$timeout(function() {
+     alertPopup.close(); 
+  }, 3000);
+ 			}
       
     /*  if(user.username == 'anusha' && user.password == 'anusha')
       {
@@ -69,7 +86,7 @@ angular.module('starter.controllers', [])
 
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
-  };
+  }
 
   $scope.signup_redirect = function(){
      $location.url('/signup');
