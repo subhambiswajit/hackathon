@@ -86,14 +86,14 @@ def verify_code(request):
 		username.gus_confirmcode = verify_code
 		username.save()
 		subject = "email verification HUL"            
-        message = "please verify your email by typing the following code in your Distributor App " + verify_code
-        sender = "hul@gmail.com"
-        send_mail(subject, message, sender, [request.user.gus_email])
-        data = False
-    else:
-    	verify_code = str(request_data['otp'])
-    	if verify_code == request.user.gus_confirmcode:
-    		data = True
+		message = "please verify your email by typing the following code in your Distributor App " + verify_code
+		sender = "hul@gmail.com"
+		send_mail(subject, message, sender, [request.user.gus_email])
+		data = False
+	else:
+		verify_code = str(request_data['otp'])
+		if verify_code == request.user.gus_confirmcode:
+			data = True
 		else:
 			data = False
 	return HttpResponse(data)
