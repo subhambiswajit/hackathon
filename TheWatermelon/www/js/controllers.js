@@ -1,9 +1,9 @@
 angular.module('starter.controllers', [])
 
 .controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint){
-            $scope.user={};
+            $scope.user = {};
             $scope.submit=function(user){
-                  
+                 
                   $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'login/',
@@ -11,11 +11,32 @@ angular.module('starter.controllers', [])
                       }).then(function successCallback(response) {
                           alert(response.data[0]);
                           console.log("success");
+						  $location.url('/Side/dash');
+						  alert('Logged in');
                       }, function errorCallback(response) {
                           console.log("ERROR");
+						  
                       });
-             $location.url('/Side/dash');
-                }
+             
+			
+			}
+			$scope.signup = function(user)
+			{
+				
+				$http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'login/',
+                        data:{username:user.nam,email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
+                      }).then(function successCallback(response) {
+                          alert(response.data[0]);
+                          console.log("success");
+						  $location.url('/Page1');
+						  alert('Signed up');
+                      }, function errorCallback(response) {
+                          console.log("ERROR");
+						  
+                      });
+			}
       
     /*  if(user.username == 'anusha' && user.password == 'anusha')
       {
