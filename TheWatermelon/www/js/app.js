@@ -33,6 +33,12 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
                      templateUrl:'Page1.html',
                      controller:'Ctrl'
                      })
+					 
+					 .state('otp',{
+                     url: '/otp',
+                     templateUrl:'otp.html',
+                     controller:'Ctrl'
+                     })
 
               .state('Side',{
                      url: '/Side',
