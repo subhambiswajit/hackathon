@@ -10,17 +10,27 @@ angular.module('starter.controllers', [])
 					 user.password="";
 				 }
 				 else {
+
                   $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'signin/',
                         data:{username:user.username, password:user.password}
                       }).then(function successCallback(response) {
-                          alert(response.data);
                           console.log("success");
-						 $scope.showAlert("Logged in successfully!","Logged in");
-						  $location.url('/Side/dash');
-						  user.password='';
-						  //alert('Logged in');
+                    if(response.data == true)
+                    {
+      						    $scope.showAlert("Logged in successfully!","Logged in");
+        						  $location.url('/Side/dash');
+        						  user.password='';
+                    }
+               else if(response.data == "verify")
+                {
+                      $location.url('/otp');
+                }
+                else if(response.data == "False")
+                {
+                  $scope.showAlert("Username/Password does not exist!","Error");
+                }
                       }, function errorCallback(response) {
 						  $scope.showAlert("Error during login!","Internal Error");
 						  user.password='';
@@ -41,14 +51,13 @@ angular.module('starter.controllers', [])
                         url: ApiEndpoint.url+ 'signup/',
                         data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
-                          alert(response.data);
                           
 						  $scope.showAlert("Signed up successfully!","Signed Up");
 						  $location.url('/Page1');
 						  
                       }, function errorCallback(response) {
                           console.log("ERROR");
-						  $scope.showAlert("Internal error during login!","Internal error");
+						  $scope.showAlert("Some field is empty !(error)");
 						  
                       });
 				}

@@ -7,9 +7,8 @@ from django.contrib.auth import authenticate, login
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 from django.core.mail import EmailMessage
+from django.contrib.auth.decorators import login_required
 
 import json
 import datetime 
@@ -56,22 +55,55 @@ def user_login(request):
     username = ''
     password = ''
     data = ''
+    username_first =''
+    username_first = GlobalUsers.objects.filter(gus_email= request_data['username'], gus_isused=0).values_list('gus_email', flat=True)
+
     username = request_data['username']
-    print username
     password = request_data['password']
-    print password
     if request.method == 'POST':
-    	try:
-    		user = authenticate(username=username, password=password)
-    		if user is not None:
-    		    data = True
-    		    login(request, user)
-    		    return HttpResponse(data)
-    		else:
-    		    raise ObjectDoesNotExist
-    	except  ObjectDoesNotExist:
-    	    data = False
-    	    return HttpResponse(data)
+        try:
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if username in username_first:
+                    data = "verify" 
+                else:    
+                    data = True
+                login(request, user)
+            else:
+                raise ObjectDoesNotExist
+                data = "False"
+        except  ObjectDoesNotExist:
+            data = False
+    return HttpResponse(data)
+
+@login_required
+def verify_code(request):
+	request_data = json.loads(request.body)
+	verify_code = ''
+	userid= ''
+	username = ''
+	data = ''
+	flag_code = request_data['verify']
+	username = GlobalUsers.objects.get(gus_email=request.user.gus_email,isused=0)
+	if flag_code == '0':
+		verify_code = str(random.randint(10000,99999))	
+		username.gus_confirmcode = verify_code
+		username.save()
+		subject = "email verification HUL"            
+		message = "please verify your email by typing the following code in your Distributor App " + verify_code
+		sender = "hul@gmail.com"
+		send_mail(subject, message, sender, [request.user.gus_email])
+		data = False
+	else:
+		verify_code = str(request_data['otp'])
+		if verify_code == request.user.gus_confirmcode:
+			data = True
+		else:
+			data = False
+	return HttpResponse(data)
+
+
+
 
       
        

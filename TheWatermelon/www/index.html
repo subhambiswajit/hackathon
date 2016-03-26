@@ -837,19 +837,19 @@
           </div>
           <ion-content >
           <br><br>
-          <div class="row">
-                <div class="col col-0">
-                 
-                <ion-radio ng-model="choice" ng-value="'A'"style="background-color:#055496"><a class="item item-icon-left" menu-close >
-                <i class="icon ion-cash" ></i>Cash On Delivery</a></ion-radio>
-                <ion-radio ng-model="choice" ng-value="'B'">
-                <i class="icon ion-card" style="width:80px;height:80px">    Credit/Debit Card</i></ion-radio>
-                <ion-radio ng-model="choice" ng-value="'C'">
-               <i class="icon ion-ios-home" style="width:80px;height:80px">    Net Banking</i>
-                </ion-radio>
+            <ul class="list">
+             <ion-radio ng-model="choice" ng-value="'A'">
+              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-cash" style="font-size:20px"></i>Cash on Delivery</a></ion-radio>
+             
+             <ion-radio ng-model="choice" ng-value="'A'">
+              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-card" style="font-size:20px"></i>Credit/Debit Card</a></ion-radio>
                 
-                </div>
-          </div>
+                
+             <ion-radio ng-model="choice" ng-value="'A'">
+              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-ios-home" style="font-size:20px"></i>Net Banking</a></ion-radio>
+                
+                
+            </ul>
 
           </ion-content>
           </ion-view>
