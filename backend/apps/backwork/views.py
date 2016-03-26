@@ -26,7 +26,7 @@ def signup_user(request):
     
     # request_data = request.GET
     back = ''
-    data = False
+    data = "False"
     hasher =''
     verify_code = ''
     username_check = GlobalUsers.objects.filter(gus_email= request_data['email']).values_list('gus_email', flat=True)
@@ -49,9 +49,8 @@ def signup_user(request):
         message = "please verify your email by typing the following code in your Distributor App " + verify_code
         sender = "hul@gmail.com"
         send_mail(subject, message, sender, [request_data['email']])
-        back = [{'hello':'hello'}]
+        data = "True"
         data = json.dumps(back)
-        print request_data
     return HttpResponse(data)
 
 @csrf_exempt
