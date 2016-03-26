@@ -10,7 +10,7 @@ angular.module('starter.controllers', [])
 					 user.password="";
 				 }
 				 else {
-
+					$ionicLoading.show();
                   $http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'signin/',
@@ -20,7 +20,7 @@ angular.module('starter.controllers', [])
                          
 						 $scope.showAlert("Logged in successfully!","Logged in");
 						$ionicLoading.hide();
-						  $location.url('/Side/dash');
+						 //$location.url('/Side/dash');
 						  user.password='';
 						  
 
@@ -82,14 +82,20 @@ angular.module('starter.controllers', [])
                         data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
                           
-						  
+						  if(response.data == "True")
+						  {
 						  $ionicLoading.hide();
 						  $scope.showAlert("Signed up successfully!","Signed Up");
 						  $location.url('/Page1');
+						  }
+						  else
+						  {
+							$scope.showAlert("User already exists!","Alert");  
+						  }
 						  
                       }, function errorCallback(response) {
                           console.log("ERROR");
-						  $scope.showAlert("Some field is empty !(error)");
+						  $scope.showAlert("Some field is empty!","Error");
 						  
                       });
 
