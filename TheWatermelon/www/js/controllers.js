@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
                       }).then(function successCallback(response) {
 
                          
-						 $scope.showAlert("Logged in successfully!","Logged in");
+						
 						$ionicLoading.hide();
 						 //$location.url('/Side/dash');
 						  user.password='';

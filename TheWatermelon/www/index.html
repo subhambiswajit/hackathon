@@ -191,7 +191,33 @@
          </ion-view>   
 	</script>
 	
-  
+  <script id="modeofpayment.html" type="text/ng-template">
+          <ion-view hide-nav-bar="true">
+          <div style="background-color:#055496" class="bar bar-header bar-positive">
+		  <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button>
+          <h1 class="title">Mode Of Payment</h1>
+          </div>
+          <ion-content >
+          <br><br>
+            <ul class="list">
+             <ion-radio ng-model="choice" ng-value="'A'">
+              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-cash" style="font-size:20px"></i>Cash on Delivery</a></ion-radio>
+             
+             <ion-radio ng-model="choice" ng-value="'A'">
+              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-card" style="font-size:20px"></i>Credit/Debit Card</a></ion-radio>
+                
+                
+             <ion-radio ng-model="choice" ng-value="'A'">
+              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-ios-home" style="font-size:20px"></i>Net Banking</a></ion-radio>
+                
+                
+            </ul>
+<br><br>
+			<p ng-show="choice=='A'"> ORDER SUCCESSFUL! </p>
+          </ion-content>
+          </ion-view>
+
+      </script>
 <script id="dash.html" type="text/ng-template">
 <ion-view hide-nav-bar="true">
 
@@ -221,19 +247,12 @@
 
 </div>
  
- 
- 
- 
-
- 
- 
- 
-<div   class="row card">
+ <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></div>
+  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 
 <div   class="row card">
@@ -241,46 +260,45 @@
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></div>
+  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></div>
+  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></div>
+  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></div>
+  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></div>
+  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
   <div class="col col-20">Rs 100</div>
   <div class="col col-20"></div>
-  <div class="col col-10"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></div>
+  <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
+<ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" has-bouncing="true"></ion-infinite-scroll>
 
-
-</ion-scroll>
 </ion-content>
 
 </ion-view>
@@ -357,7 +375,7 @@
      
     </div>
     <ion-content padding="true">
-    <ion-scroll zooming="false" direction="y" style=" height: 400px" has-bouncing = "true" scrollbar-y="true" ng-init="name=''">
+    <ion-scroll zooming="false" direction="y" style="" has-bouncing = "true" scrollbar-y="true" ng-init="name=''">
     <br>
           <div   class="row card">
             <div class="col col-100">
@@ -775,15 +793,15 @@
 
                 <div class="row">
                       <div class="col col-offset-20 col-30">
-                      <button class="button button-small button-positive"style="background-color:#055496" href="#/vieworders">
+                      <a href="#/vieworders"><button class="button button-small button-positive"style="background-color:#055496">
                         < Back
-                      </button>
+                      </button></a>
                       </div>
                       <div class="col col-30">
                       
-                      <button class="button button-small button-positive"style="background-color:#055496" href = "#/modeofpayment">
+                      <a href = "#/Side/modeofpayment"><button class="button button-small button-positive"style="background-color:#055496">
                         Submit >
-                      </button>
+                      </button></a>
                       </div>
                       
                 </div>
@@ -795,32 +813,7 @@
 
       </script>
 
-      <script id="modeofpayment.html" type="text/ng-template">
-          <ion-view hide-nav-bar="true">
-          <div style="background-color:#055496" class="bar bar-header bar-positive">
-          <h1 class="title">Mode Of Payment</h1>
-          </div>
-          <ion-content >
-          <br><br>
-            <ul class="list">
-             <ion-radio ng-model="choice" ng-value="'A'">
-              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-cash" style="font-size:20px"></i>Cash on Delivery</a></ion-radio>
-             
-             <ion-radio ng-model="choice" ng-value="'A'">
-              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-card" style="font-size:20px"></i>Credit/Debit Card</a></ion-radio>
-                
-                
-             <ion-radio ng-model="choice" ng-value="'A'">
-              <a class="item item-icon-left" menu-close style="background-color:#055496;color:white"> <i class="icon ion-ios-home" style="font-size:20px"></i>Net Banking</a></ion-radio>
-                
-                
-            </ul>
-<br><br>
-			<p ng-show="choice=='A'"> ORDER SUCCESSFUL! </p>
-          </ion-content>
-          </ion-view>
-
-      </script>
+      
     <ion-nav-view></ion-nav-view>
   </body>
 </html>

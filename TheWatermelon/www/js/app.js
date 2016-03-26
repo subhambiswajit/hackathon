@@ -104,7 +104,15 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
                       }               
                      })
                   
-             
+             .state('Side.modeofpayment',{
+                       url:'/modeofpayment',
+                       views: {
+                      'appContent' :{
+                        templateUrl: 'modeofpayment.html',
+                        controller : 'Ctrl'
+                      }
+                      }               
+                     })
 
               .state('signup',{
                      url: '/signup',
@@ -137,14 +145,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
                       templateUrl:'address_details.html',
                       comtroller:'Ctrl'
                       })
-                .state('modeofpayment',{
-                      url:'/modeofpayment',
-                      templateUrl:'modeofpayment.html',
-                      comtroller:'Ctrl'
-                      })
-
-
-             
+                            
 
  $urlRouterProvider.otherwise('/Page1');
     });
