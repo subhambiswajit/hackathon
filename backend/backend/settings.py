@@ -61,6 +61,8 @@ AUTHENTICATION_BACKENDS = (
 
 
 )
+LOGIN_URL = "/"
+LOGIN_REDIRECT_URL = "/test"
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

@@ -12,7 +12,7 @@ class HackathonBackend:
             # Try to find a user matching your username
             print 'inside authenticate'
             print '>>>>>>>>>>>>>>>>>'
-            user = GlobalUsers.objects.get(gus_email=username,gus_isused=0)
+            user = GlobalUsers.objects.get(gus_email=username)
             print username
             print user.gus_email
             #  Check the password is the reverse of the username
@@ -44,6 +44,6 @@ class HackathonBackend:
     # Required for your backend to work properly - unchanged in most scenarios
     def get_user(self, user_id):
         try:
-            return GlobalUsers.objects.get(gus_email=user_id)
+            return GlobalUsers.objects.get(gus_userid=user_id)
         except GlobalUsers.DoesNotExist:
             return None
