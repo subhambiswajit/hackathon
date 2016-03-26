@@ -85,11 +85,11 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
                       }
                       }               
                      })
-              .state('Side.vieworders',{
-                       url:'/vieworders',
+              .state('Side.view_orders',{
+                       url:'/view_orders',
                        views: {
                       'appContent' :{
-                        templateUrl: 'vieworders.html',
+                        templateUrl: 'view_orders.html',
                         controller : 'Ctrl'
                       }
                       }               

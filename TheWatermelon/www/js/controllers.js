@@ -50,6 +50,26 @@ angular.module('starter.controllers', [])
 			
 			}
 			
+			$scope.logout = function()
+			{
+				$http({
+                        method: 'POST',
+                        url: ApiEndpoint.url+ 'loggedout/',
+                        data:{loggedout:1}
+                      }).then(function successCallback(response) {
+                          
+						  
+						  //$scope.showAlert("Signed up successfully!","Signed Up");
+						 // $location.url('/Page1');
+						  
+                      }, function errorCallback(response) {
+                          //console.log("ERROR");
+						  //$scope.showAlert("Some field is empty !(error)");
+						  
+						  
+                      });
+			}
+			
 			$scope.signup = function(user)
 			{
 				if(user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
