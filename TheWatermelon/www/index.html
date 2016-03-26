@@ -813,7 +813,47 @@
 
       </script>
 
+<<<<<<< HEAD
       
+=======
+      <script id="modeofpayment.html" type="text/ng-template">
+          <ion-view hide-nav-bar="true">
+          <div style="background-color:#055496" class="bar bar-header bar-positive">
+          <h1 class="title">Mode Of Payment</h1>
+          </div>
+          <ion-content >
+          <br><br>
+            <ul class="list">
+             <ion-radio ng-model="choice" ng-value="'A'">
+              <a class="item item-icon-left" menu-close> <i class="icon ion-cash" style="font-size:25px"></i>Cash on Delivery</a></ion-radio>
+             
+             <ion-radio ng-model="choice" ng-value="'A'">
+              <a class="item item-icon-left" menu-close > <i class="icon ion-card" style="font-size:20px"></i>Credit/Debit Card</a></ion-radio>
+                
+                
+             <ion-radio ng-model="choice" ng-value="'A'">
+              <a class="item item-icon-left" menu-close> <i class="icon ion-ios-home" style="font-size:20px"></i>Net Banking</a></ion-radio>
+               </ul>
+<br><br>
+			<p ng-show="choice=='A'"> ORDER SUCCESSFUL! </p>
+          
+          <div class="row">
+            <div class="col col-offset-10 col-50">
+              <button class="button button-positive" style="background-color:#055496" href="#/address_details">
+               Back
+              </button>
+            </div>
+            <div class="col col-50">
+              <button class="button button-positive"style="background-color:#055496" href="#/checkout">
+              CheckOut
+              </button>
+            </div>
+          </div>
+          </ion-content>
+          </ion-view>
+
+      </script>
+>>>>>>> cb4710830f5422ac6867cb3dda55ef7aeecca41d
     <ion-nav-view></ion-nav-view>
   </body>
 </html>
