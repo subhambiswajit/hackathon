@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
 						  
 
                           console.log("success");
-                    if(response.data == true)
+                    if(response.data == "true")
                     {
       						    $scope.showAlert("Logged in successfully!","Logged in");
         						  $location.url('/Side/dash');
@@ -72,7 +72,7 @@ angular.module('starter.controllers', [])
 			
 			$scope.signup = function(user)
 			{
-				if(user.nam=='' || user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
+				if(user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
 					$scope.showAlert("Some field is empty!","Error");
 				else{
 				$http({
@@ -89,22 +89,28 @@ angular.module('starter.controllers', [])
 						  $scope.showAlert("Some field is empty !(error)");
 						  
                       });
+
 				}
+                      user.email=='';
+                      user.add == '';
+                      user.pin=='';
+                      user.phone == '';
+                      user.pass == '';
 			}
 			$scope.verify = function(n,user) {
 				if(n==0)
 					$scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
 				$http({
                         method: 'POST',
-                        url: ApiEndpoint.url+ 'verify_otp/',
+                        url: ApiEndpoint.url+ 'verify_code/',
                         data:{otp:user.otp, verify:n}
                       }).then(function successCallback(response) {
-						  if(response.data == true)
+						  if(response.data == "true")
 						  {
 							  $scope.showAlert("Verified successfully!","Success");
 							  $location.url("/Side/dash");
 						  }
-                          else if(response.data == false)
+              else if(response.data == "False")
 						  {
 							  $scope.showAlert("Invalid verification code!","Error");
 							  user.otp = "";
