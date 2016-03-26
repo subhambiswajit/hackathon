@@ -1,7 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup){
-            $scope.items = [{id:1,name:'',price:'',image:''},{id:2,name:'',price:'',image:''}];
+.controller('Ctrl',function($scope,$rootScope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup){
+          
+			$rootScope.items = [];
+			$scope.noMoreItemsAvailable = false;
+			$scope.len=0;
             $scope.submit=function(user){
                  if(user.username=='' || user.password=='')
 				 {
@@ -16,16 +19,12 @@ angular.module('starter.controllers', [])
                         url: ApiEndpoint.url+ 'signin/',
                         data:{username:user.username, password:user.password}
                       }).then(function successCallback(response) {
-
-                         
-						
-						$ionicLoading.hide();
-						 //$location.url('/Side/dash');
+						  $ionicLoading.hide();
+						  $scope.len = response.len;
 						  user.password='';
-						  
-
                           console.log("success");
-                    if(response.data == "true")
+                    
+					if(response.data == "true")
                     {
       						    $scope.showAlert("Logged in successfully!","Logged in");
         						  $location.url('/Side/dash');
@@ -44,11 +43,9 @@ angular.module('starter.controllers', [])
 						  $scope.showAlert("Error during login!","Internal Error");
 						  user.password='';
                          
-						  
-				 });}
-             
-			
-			}
+						 });
+				 }
+             }
 			
 			$scope.logout = function()
 			{
@@ -57,16 +54,9 @@ angular.module('starter.controllers', [])
                         url: ApiEndpoint.url+ 'loggedout/',
                         data:{loggedout:1}
                       }).then(function successCallback(response) {
-                          
-						  
-						  //$scope.showAlert("Signed up successfully!","Signed Up");
-						 // $location.url('/Page1');
-						  
+                         						  
                       }, function errorCallback(response) {
-                          //console.log("ERROR");
-						  //$scope.showAlert("Some field is empty !(error)");
-						  
-						  
+                         
                       });
 			}
 			
@@ -146,20 +136,7 @@ $timeout(function() {
 			$scope.hide = function(){
     $ionicLoading.hide();
   };
-      
-    /*  if(user.username == 'anusha' && user.password == 'anusha')
-      {
-      user.username="";
-      user.password="";
-            $location.url('/Side/home');
-      }
-      else
-      {
-      user.username="";
-      user.password="";
-      alert('Invalid information');}
-       */
-
+  
       $scope.save=function() {
       alert("Saved!");
       $location.url('/Side/dash');
@@ -183,5 +160,17 @@ $timeout(function() {
   $scope.signup_redirect = function(){
      $location.url('/signup');
   }
+  
+  $scope.loadMore = function() {
+    $rootScope.items.push({ id: $rootScope.items.length,});
+   
+    if ($rootScope.items.length == $scope.len) {
+      $scope.noMoreItemsAvailable = true;
+    }
+    $scope.$broadcast('scroll.infiniteScrollComplete');
+  };
+  
+  
+  
   
             });
