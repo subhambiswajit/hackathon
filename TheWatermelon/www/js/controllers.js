@@ -90,11 +90,13 @@ angular.module('starter.controllers', [])
 						  }
 						  else
 						  {
+							  $ionicLoading.hide();
 							$scope.showAlert("User already exists!","Alert");  
 						  }
 						  
                       }, function errorCallback(response) {
                           console.log("ERROR");
+						  $ionicLoading.hide();
 						  $scope.showAlert("Some field is empty!","Error");
 						  
                       });
