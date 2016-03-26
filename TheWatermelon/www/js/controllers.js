@@ -1,10 +1,11 @@
 angular.module('starter.controllers', [])
 
 .controller('Ctrl',function($scope,$rootScope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup){
-          
+            
+			$rootScope.show = [];
 			$rootScope.items = [];
 			$scope.noMoreItemsAvailable = false;
-			$scope.len=0;
+			$scope.len=0, $rootScope.x=0;
             $scope.submit=function(user){
                  if(user.username=='' || user.password=='')
 				 {
@@ -19,6 +20,7 @@ angular.module('starter.controllers', [])
                         url: ApiEndpoint.url+ 'signin/',
                         data:{username:user.username, password:user.password}
                       }).then(function successCallback(response) {
+						  $rootScope.items = response.render_data;
 						  $ionicLoading.hide();
 						  $scope.len = response.len;
 						  user.password='';
@@ -162,12 +164,16 @@ $timeout(function() {
   }
   
   $scope.loadMore = function() {
-    $rootScope.items.push({ id: $rootScope.items.length,});
+	  
+	  for($scope.i = $rootScope.x;($scope.i<=($rootScope.x+5)) && ($rootScope.x<$scope.len);$scope.i++)
+	  
+    $rootScope.show.push({ id: $scope.i,p_id:$rootScope.items($scope.i).id,name:$rootScope.items($scope.i).name,price:$rootScope.items($scope.i).price,image:''});
    
     if ($rootScope.items.length == $scope.len) {
       $scope.noMoreItemsAvailable = true;
     }
     $scope.$broadcast('scroll.infiniteScrollComplete');
+	  
   };
   
   
