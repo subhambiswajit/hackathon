@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('Ctrl',function($scope,$http,$state,$location,$ionicLoading,$timeout,$ionicSideMenuDelegate,ApiEndpoint,$ionicPopup){
-            $scope.user = {};
+            $scope.items = [{id:1,name:'',price:'',image:''},{id:2,name:'',price:'',image:''}];
             $scope.submit=function(user){
                  if(user.username=='' || user.password=='')
 				 {
@@ -16,6 +16,14 @@ angular.module('starter.controllers', [])
                         url: ApiEndpoint.url+ 'signin/',
                         data:{username:user.username, password:user.password}
                       }).then(function successCallback(response) {
+
+                         
+						 $scope.showAlert("Logged in successfully!","Logged in");
+						 
+						  $location.url('/Side/dash');
+						  user.password='';
+						  
+
                           console.log("success");
                     if(response.data == "true")
                     {
@@ -31,10 +39,11 @@ angular.module('starter.controllers', [])
                 {
                   $scope.showAlert("Username/Password does not exist!","Error");
                 }
+
                       }, function errorCallback(response) {
 						  $scope.showAlert("Error during login!","Internal Error");
 						  user.password='';
-                         // console.log("ERROR");
+                         
 						  
 				 });}
              
