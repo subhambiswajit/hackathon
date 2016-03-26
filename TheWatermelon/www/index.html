@@ -683,7 +683,7 @@
                 <button class="button button-icon icon ion-navicon" style="text-align:left;padding-right:20px" menu-toggle = "left"></button> 
                <h1 class="title">My Cart</h1>
           </div>
-          <ion-content padding="true"t>
+          <ion-content padding="true">
           
           <br><br><br>
           
@@ -831,7 +831,28 @@
       </script>
 
       <script id="modeofpayment.html" type="text/ng-template">
+          <ion-view hide-nav-bar="true">
+          <div style="background-color:#055496" class="bar bar-header bar-positive">
+          <h1 class="title">Mode Of Payment</h1>
+          </div>
+          <ion-content >
+          <br><br>
+          <div class="row">
+                <div class="col col-0">
+                 
+                <ion-radio ng-model="choice" ng-value="'A'"style="background-color:#055496"><a class="item item-icon-left" menu-close >
+                <i class="icon ion-cash" ></i>Cash On Delivery</a></ion-radio>
+                <ion-radio ng-model="choice" ng-value="'B'">
+                <i class="icon ion-card" style="width:80px;height:80px">    Credit/Debit Card</i></ion-radio>
+                <ion-radio ng-model="choice" ng-value="'C'">
+               <i class="icon ion-ios-home" style="width:80px;height:80px">    Net Banking</i>
+                </ion-radio>
+                
+                </div>
+          </div>
 
+          </ion-content>
+          </ion-view>
 
       </script>
     <ion-nav-view></ion-nav-view>
