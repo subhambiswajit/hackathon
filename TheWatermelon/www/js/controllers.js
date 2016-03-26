@@ -19,7 +19,7 @@ angular.module('starter.controllers', [])
 
                          
 						 $scope.showAlert("Logged in successfully!","Logged in");
-						 
+						$ionicLoading.hide();
 						  $location.url('/Side/dash');
 						  user.password='';
 						  
@@ -75,12 +75,15 @@ angular.module('starter.controllers', [])
 				if(user.email=='' || user.add == '' || user.pin=='' || user.phone == '' || user.pass == '')
 					$scope.showAlert("Some field is empty!","Error");
 				else{
+					$ionicLoading.show();
 				$http({
                         method: 'POST',
                         url: ApiEndpoint.url+ 'signup/',
                         data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
                           
+						  
+						  $ionicLoading.hide();
 						  $scope.showAlert("Signed up successfully!","Signed Up");
 						  $location.url('/Page1');
 						  
@@ -132,6 +135,9 @@ $timeout(function() {
      alertPopup.close(); 
   }, 3000);
  			}
+			$scope.hide = function(){
+    $ionicLoading.hide();
+  };
       
     /*  if(user.username == 'anusha' && user.password == 'anusha')
       {
@@ -160,7 +166,7 @@ $timeout(function() {
   })
 
    $timeout(function () {
-    $ionicLoading.hide();},1000)
+   $ionicLoading.hide();},1000)
 
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
