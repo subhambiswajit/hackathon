@@ -22,7 +22,7 @@ angular.module('starter.controllers', [])
                       }).then(function successCallback(response) {
 						  $rootScope.items = response.render_data;
 						  $ionicLoading.hide();
-						  $scope.len = response.len;
+						  $scope.len = response.count;
 						  user.password='';
                           console.log("success");
                     

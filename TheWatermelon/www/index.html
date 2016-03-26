@@ -238,7 +238,7 @@
 
   <div class="item item-input-inset">
     <label class="item-input-wrapper">
-      <input type="text" placeholder="Search items">
+      <input type="text" placeholder="Search items" ng-model="query.names">
     </label>
     <button class="button button-small">
       Search
@@ -298,13 +298,14 @@
   <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div> -->
 
-<div   class="row card">
+<div class="row card" ng-repeat = "x in filteredItems = (show |  filter: query)">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
-  <div class="col col-40">Kissan Jam</div>
-  <div class="col col-20">Rs 100</div>
+  <div class="col col-40">{{x.name}}</div>
+  <div class="col col-20">{{x.price}}</div>
   <div class="col col-20"></div>
   <div class="col col-10"><a href="#"><i style="color:#055496;font-size:40px" class="icon ion-plus-circled"></i></a></div>
 </div>
+<p ng-hide = "filteredItems.length" style = "text-align:center;font-family: Times New Roman"> No search results!</p>
 <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" has-bouncing="true"></ion-infinite-scroll>
 
 </ion-content>
