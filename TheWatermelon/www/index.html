@@ -260,6 +260,53 @@
 
 </div>
  
+ 
+ 
+ 
+ 
+ 
+<ion-content padding="true">
+  <br>
+<div class="list" style="background-color: white">
+<div class="list list-inset">
+  <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="text" placeholder="Search"  ng-model="query.names">
+  </label>
+</div>
+<!-- <ion-scroll zooming="false" direction="y" style=" height: 400px" has-bouncing = "true" scrollbar-y="true" ng-init="name=''"> -->
+
+<!-- <a ng-repeat = "x in filteredItems = (items |  filter:query)" class="item item-avatar item-icon-right" ng-click = "setName(x.names)" on-hold = "delet1(x.id)"> -->
+	
+<a ng-repeat = "x in filteredItems = (items |  filter: query)" class="item item-avatar item-icon-right"> 
+     <img ng-src="{{x.image}}">
+	  <i class="icon ion-chevron-right"></i>
+      <h2>{{x.name}}</h2>
+      <p>{{x.empid}}</p>
+	  
+	  
+	  </a>
+ <p ng-hide = "filteredItems.length" style = "text-align:center;font-family: Times New Roman"> No search results!</p>
+	 
+	<br><br>
+	
+</div>
+
+ <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
+<!-- </ion-scroll> -->
+</ion-content> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!--
+ 
+ 
+ 
 <div   class="row card">
   <div class="col col-10"><img width="100%" src="img/kissan_jam.png"> </div>
   <div class="col col-40">Kissan Jam</div>
@@ -313,7 +360,7 @@
 
 
 </ion-scroll>
-</ion-content>
+</ion-content> -->
 
 </ion-view>
 </script>
