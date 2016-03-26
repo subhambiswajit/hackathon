@@ -85,11 +85,11 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
                       }
                       }               
                      })
-              .state('Side.view_orders',{
-                       url:'/view_orders',
+              .state('Side.vieworders',{
+                       url:'/vieworders',
                        views: {
                       'appContent' :{
-                        templateUrl: 'view_orders.html',
+                        templateUrl: 'vieworders.html',
                         controller : 'Ctrl'
                       }
                       }               
@@ -103,16 +103,7 @@ angular.module('starter', ['ionic','starter.controllers','ngCordova'])
                       }
                       }               
                      })
-               .state('Side.modeofpayment',{
-                       url:'/modeofpayment',
-                       views: {
-                      'appContent' :{
-                        templateUrl: 'modeofpayment.html',
-                        controller : 'Ctrl'
-                      }
-                      }               
-                     })
-              
+                  
              
 
               .state('signup',{
