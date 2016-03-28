@@ -9,5 +9,6 @@ urlpatterns = patterns('',
 
 	url(r'^signup/$',views.signup_user, name="auth_signup"),
 	url(r'^signin/$',views.user_login, name="auth_login"),
-	url(r'^verify_code/$',views.verify_code, name="verify_code")
+	url(r'^verify_code/$',views.verify_code, name="verify_code"),
+	url(r'^product/$',views.product_list, name="product")
 )

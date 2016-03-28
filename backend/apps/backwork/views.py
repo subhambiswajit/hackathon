@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from apps.backwork.models import GlobalUsers, TCustomerMstr
+from apps.backwork.models import *
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.contrib.auth import REDIRECT_FIELD_NAME
@@ -14,6 +14,8 @@ from django.shortcuts import resolve_url
 from django.conf import settings
 from django.template.response import TemplateResponse
 from django.http import HttpResponseRedirect
+from django.core import serializers
+from django.http import JsonResponse
 
 import json
 import datetime 
@@ -57,7 +59,6 @@ def signup_user(request):
 def user_login(request,redirect_field_name=REDIRECT_FIELD_NAME):
     redirect_to = request.GET.get(redirect_field_name,
                                    request.GET.get(redirect_field_name, ''))
-    print "redirect to val :",redirect_to
 	# request_data = json.loads(request.body)
     request_data = json.loads(request.body)
     username = ''
@@ -65,25 +66,23 @@ def user_login(request,redirect_field_name=REDIRECT_FIELD_NAME):
     data = ''
     username_first =''
     username_first = GlobalUsers.objects.filter(gus_email= request_data['username'], gus_isused=0).values_list('gus_email', flat=True)
-
     username = request_data['username']
     password = request_data['password']
     if request.method == 'POST':
         try:
             user = authenticate(username=username, password=password)
             if user is not None:
-                redirect_to = resolve_url(settings.LOGIN_REDIRECT_URL)
                 if username in username_first:
-                    data = "verify" 
+                    data= "verify" 
                 else:    
-                    data = "true"
+                    data = "True"
                 login(request, user)
             else:
                 raise ObjectDoesNotExist
                 data = "False"
         except  ObjectDoesNotExist:
-            data = False
-    print request.user
+            data = "False"
+    
     return HttpResponse(data)
 
 
@@ -125,6 +124,23 @@ def verify_code(request):
             else:
             	data = "False"
     return HttpResponse(data)
+@csrf_exempt
+def product_list(request):
+    data ={}
+    if request.method == 'POST':
+        product_id = ProductList.objects.filter(product_isused=0)
+        product =[]
+        for t in product_id:
+            print 'Processing tour no: '
+            pro={}
+            pro["id"]  = str(t.product_id)
+            pro["name"]  = t.product_name 
+            pro["price"] = str(t.product_price)
+            product.append(pro)
+        data['product'] = product
+        data['hello'] = 'hello'
+    return HttpResponse(json.dumps(data),content_type='application/json')
+
 
 
 

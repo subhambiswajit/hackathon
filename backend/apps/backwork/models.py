@@ -42,3 +42,16 @@ class TCustomerMstr(models.Model):
         managed = False
         db_table = 'T_CUSTOMER_MSTR'
 
+
+class ProductList(models.Model):
+    product_id = models.IntegerField(primary_key=True)
+    product_name = models.CharField(max_length=100, blank=True)
+    product_price = models.CharField(max_length=100, blank=True)
+    product_isused = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'product_list'
+
+
+
