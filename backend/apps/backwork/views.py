@@ -27,13 +27,11 @@ def signup_user(request):
     request_data = json.loads(request.body)
     
     # request_data = request.GET
-    back = ''
-    data = "False"
+    back = "False"
     hasher =''
     verify_code = ''
     username_check = GlobalUsers.objects.filter(gus_email= request_data['email']).values_list('gus_email', flat=True)
     if request.method == 'POST' and request_data['email'] not in username_check:
-        data = True
         verify_code = str(random.randint(10000,99999))
         hasher = PBKDF2PasswordHasher()
         signup_details = GlobalUsers()
@@ -51,8 +49,9 @@ def signup_user(request):
         message = "please verify your email by typing the following code in your Distributor App " + verify_code
         sender = "hul@gmail.com"
         send_mail(subject, message, sender, [request_data['email']])
-        data = "True"
-        data = json.dumps(back)
+        back = "True"
+    print back
+    data = back
     return HttpResponse(data)
 
 @csrf_exempt

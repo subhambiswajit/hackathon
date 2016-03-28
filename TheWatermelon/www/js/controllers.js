@@ -101,7 +101,7 @@ angular.module('starter.controllers', [])
                         url: ApiEndpoint.url+ 'signup/',
                         data:{email:user.email, address:user.add, pincode:user.pin, phone:user.phone,password:user.pass}
                       }).then(function successCallback(response) {
-                          
+                        alert(response.data);
               if(response.data == "True")
               {
               $ionicLoading.hide();

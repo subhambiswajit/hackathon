@@ -128,6 +128,11 @@ angular.module('starter.controllers', [])
                       user.phone == '';
                       user.pass == '';
 			}
+
+
+
+
+      
 			$scope.verify = function(n,user) {
 				if(n==0)
 					$scope.showAlert("Another OTP will be sent shortly to your registered email id","Resend");
